@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
+import './Home.css'
 import API from './../utils/API';
 import { link } from 'react-router-dom';
 import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstrap';
@@ -33,6 +34,10 @@ class Home extends Component {
     this.setState( {collapse: !this.state.collapse });
   }
 
+  setHover = () => {this.setState({hovered: true})}
+  cancelHover = () => {this.setState({hovered: false})}
+
+
   render() {
     return (
       <div>
@@ -40,7 +45,7 @@ class Home extends Component {
         <div class="container">
           <div class="row">
             <div class="col-sm">
-              <Card color="primary">
+              <Card id="first-card" className="card">
                 <CardBody>
                   <CardTitle>{this.state.currentDaysInRow}</CardTitle>
                   <CardText> You have done a burst workout {this.state.currentDaysInRow} 
@@ -51,8 +56,8 @@ class Home extends Component {
               </Card>
             </div>
 
-            <div class="col-sm">
-              <Card >
+            <div className="col-sm">
+              <Card id="middle-card" className="card">
                 <CardBody>
                   <CardTitle>{this.state.highestDaysInRow}</CardTitle>
                   <CardText> Your longest workout streak is {this.state.highestDaysInRow} 
@@ -62,8 +67,8 @@ class Home extends Component {
               </Card>
             </div>
 
-            <div class="col-sm">
-              <Card color="success">
+            <div className="col-sm">
+              <Card id="last-card" className="card">
                 <CardBody>
                   <CardTitle>{this.state.totalDaysInRow}</CardTitle>
                   <CardText> Your total number of burst workouts is {this.state.totalDaysInRow}
