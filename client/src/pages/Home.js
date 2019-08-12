@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import API from './../utils/API';
 import { link } from 'react-router-dom';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstrap';
 
 
 class Home extends Component {
@@ -11,7 +11,7 @@ class Home extends Component {
     this.state = {
       username: "",
       email: "",
-      currentDaysInRow: 1,
+      currentDaysInRow: 6,
       highestDaysInRow: 2,
       totalDaysInRow: 3,
       collapse: false
@@ -34,47 +34,48 @@ class Home extends Component {
   }
 
   render() {
-
     return (
       <div>
         <h1>Welcome {this.state.username} to your home page</h1>
         <div class="container">
           <div class="row">
-
             <div class="col-sm">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">{this.state.currentDaysInRow}</h5>
-                  <p class="card-text"> You have done a burst workout {this.state.currentDaysInRow} days in a row
-                  </p>
-                </div>
-              </div>
+              <Card color="primary">
+                <CardBody>
+                  <CardTitle>{this.state.currentDaysInRow}</CardTitle>
+                  <CardText> You have done a burst workout {this.state.currentDaysInRow} 
+                  {(this.state.currentDaysInRow) > 1 ? " days " : " day "}
+                  in a row
+                  </CardText>
+                </CardBody>
+              </Card>
             </div>
 
             <div class="col-sm">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">{this.state.highestDaysInRow}</h5>
-                  <p class="card-text"> Your workout streak is {this.state.highestDaysInRow} days
-                  </p>
-                </div>
-              </div>
+              <Card >
+                <CardBody>
+                  <CardTitle>{this.state.highestDaysInRow}</CardTitle>
+                  <CardText> Your longest workout streak is {this.state.highestDaysInRow} 
+                  {(this.state.highestDaysInRow) > 1 ? " days " : " day "}
+                  </CardText>
+                </CardBody>
+              </Card>
             </div>
 
             <div class="col-sm">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">{this.state.totalDaysInRow}</h5>
-                  <p class="card-text"> Your total number of bust workouts are {this.state.totalDaysInRow}
-                  </p>
-                </div>
-              </div>
+              <Card color="success">
+                <CardBody>
+                  <CardTitle>{this.state.totalDaysInRow}</CardTitle>
+                  <CardText> Your total number of burst workouts is {this.state.totalDaysInRow}
+                  </CardText>
+                </CardBody>
+              </Card>
             </div>
           </div>
         </div>
         <br />
 
-        <button type="button" className="btn btn-danger">Click here for today's workout</button>
+        <Button color="danger">Click here for today's workout</Button>
         <br/>
         <br/>
 
