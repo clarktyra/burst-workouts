@@ -28,6 +28,7 @@
     "mongoose": "^5.5.3",
     "morgan": "^1.9.1",
     "react-transition-group": "^4.2.2",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.0.1",
+    "react-compound-timer": "^1.1.4"
   }
 }
