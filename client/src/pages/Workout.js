@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import withAuth from './../components/withAuth';
 // import { Link } from 'react-router-dom';
 // import AuthService from './../components/AuthService';
 // import API from './../utils/API';
@@ -76,4 +77,4 @@ class Workout extends Component {
     }
 }
 
-export default Workout;
+export default withAuth(Workout);
