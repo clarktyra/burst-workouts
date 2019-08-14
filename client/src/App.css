@@ -1,9 +1,3 @@
-
-@font-face {
-  src: url('./fonts/digital-7/digital-7 (mono italic).ttf');
-  font-family: digital-clock;
-
-}
 .App {
   text-align: center;
 }
@@ -28,36 +22,3 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-.timer {
-  color: pink;
-  display: flex;
-  justify-content: center;
-  font-family: digital-clock;
-  font-size: 100px;
-}
-
-.botton-container {
-  display: flex;
-  justify-content: center;
-}
-
-.button-start {
-  background: green;
-  width: 250px;
-  height: 50px;
-  border-radius: 5px;
-}
-
-
-.button-stop {
-  background: red;
-  width: 250px;
-  height: 50px;
-  border-radius: 5px;
-}
-
-button:focus {
-  outline: 0;
-}
-
