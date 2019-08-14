@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import './Home.css'
 import API from './../utils/API';
-import { link } from 'react-router-dom';
+// import { link } from 'react-router-dom';
 import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstrap';
 
 
