@@ -10,15 +10,16 @@ import axios from "axios";
 // Our Components
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import Leaderboard from './pages/Leaderboard';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Workout from './pages/Workout';
 
 // Here is if we have an id_token in localStorage
-if(localStorage.getItem("id_token")) {
-  // then we will attach it to the headers of each request from react application via axios
-  axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
+if (localStorage.getItem("id_token")) {
+    // then we will attach it to the headers of each request from react application via axios
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('id_token')}`;
 }
 
 ReactDOM.render(
@@ -29,6 +30,7 @@ ReactDOM.render(
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/leaderboard" component={Leaderboard} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/workout" component={Workout} />
         </div>
