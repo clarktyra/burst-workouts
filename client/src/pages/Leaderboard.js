@@ -11,18 +11,33 @@ class Leaderboard extends Component {
       users: []
     }
 
+    this.incrementer = this.incrementer.bind(this);
+    this.randomStreak = this.randomStreak.bind(this);
+  }
+
+  incrementer(count) {
+    let numDays = count + 1;
+    return numDays > 1 ? `${numDays} days` : `${numDays} day`;
+  }
+
+  randomStreak(count) {
+    let numDays = Math.floor(Math.random() * Math.floor(count));
+    return numDays >= 1 ? `${numDays} days` : `${numDays} day`
   }
 
   componentDidMount() {
-    let currentCounter = 1;
-    let longestCounter = 4;
-    let currentStreak = `${currentCounter} day`;
-    let longestStreak = `${longestCounter} days`;
+    let currentCounter = 0;
+    let longestCounter = 10;
+    let currentStreak;
+    let longestStreak;
     API.getUsers(this.props.users)
       .then(res => {
         let callUsers = res.data;
         callUsers.map(addToUser => {
-          return Object.assign(addToUser, { longestStreak, currentStreak })
+          return Object.assign(
+            addToUser,
+            { longestStreak: this.randomStreak(longestCounter), currentStreak: this.incrementer(currentCounter) }
+          )
         })
         this.setState({
           users: callUsers
@@ -32,7 +47,6 @@ class Leaderboard extends Component {
 
   render() {
     const { users } = this.state;
-    console.log('render', users);
     return (
       <div className="leaderboard-container">
         <Link to="/">Go Home</Link>
@@ -62,6 +76,6 @@ class Leaderboard extends Component {
       </div>
     )
   }
-}
+};
 
 export default withAuth(Leaderboard);
