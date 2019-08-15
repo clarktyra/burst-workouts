@@ -12,7 +12,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Leaderboard from './pages/Leaderboard';
 import Signup from './pages/Signup';
-import Navbar from './components/Navbar';
+import Navibar from './components/Navbar';
 import Home from './pages/Home';
 import Workout from './pages/Workout';
 
@@ -25,7 +25,7 @@ if (localStorage.getItem("id_token")) {
 ReactDOM.render(
     <Router>
         <div>
-            <Navbar />
+            <Navibar />
             <Route exact path="/" component={App} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />

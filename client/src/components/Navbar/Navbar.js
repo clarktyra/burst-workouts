@@ -1,12 +1,35 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+} from 'reactstrap';
 
-class Navbar extends Component {
+class Navibar extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
+        this.toggleNavbar = this.toggleNavbar.bind(this);
+        this.state = {
+            collapsed: true
+        };
     }
+    toggleNavbar() {
+        this.setState({
+            collapsed: !this.state.collapsed
+        });
+    }
+
 
     showNavigation = () => {
         if (this.Auth.loggedIn()) {
@@ -49,21 +72,28 @@ class Navbar extends Component {
 
     render() {
         return (
+
             <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
                 <div className="container">
                     <Link className="navbar-brand" to="/home">Burst Workouts</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mr-auto">
-                        </ul>
-                        {this.showNavigation()}
-                    </div>
+                    <Navbar color="faded" light>
+                        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+                        <Collapse isOpen={!this.state.collapsed} navbar>
+                            {this.showNavigation()}
+                        </Collapse>
+                    </Navbar>
                 </div>
             </nav>
+
+
+
+
+
+
+
+
         )
     }
 }
 
-export default Navbar;
+export default Navibar;
