@@ -41,19 +41,19 @@ class Signup extends Component {
     });
   };
 
-  
+
 
   render() {
 
     return (
-      <div>
+      <div className="wrapper">
         <div className="row">
           <div className="container col-md-6 signup-container">
             <div className="headers">
-            <h1>JOIN THE MOVEMENT </h1>
-            <h3>SIGN UP NOW FOR FREE</h3>
+              <h1>JOIN THE MOVEMENT </h1>
+              <h3>SIGN UP NOW FOR FREE</h3>
             </div>
-            
+
             <form onSubmit={this.handleFormSubmit}>
               <div className="form-group">
                 <label htmlFor="username">Username:</label>
@@ -89,8 +89,8 @@ class Signup extends Component {
         </div>
         <br></br>
         <div className="row">
-        <div className="container col-md-6 ">
-          <img style={imgStyle} src={jumpropeImg} />
+          <div className="container col-md-6 ">
+            <img style={imgStyle} src={jumpropeImg} />
           </div>
         </div>
         <br></br>
