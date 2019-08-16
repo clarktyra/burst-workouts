@@ -21,18 +21,21 @@ class Navibar extends Component {
         this.Auth = new AuthService();
         this.toggleNavbar = this.toggleNavbar.bind(this);
         this.state = {
-            collapsed: true
+            collapsed: true,
+            loggedIn: this.Auth.loggedIn()
         };
     }
+   
     toggleNavbar() {
         this.setState({
             collapsed: !this.state.collapsed
         });
-    }
+    } 
 
+    
 
     showNavigation = () => {
-        if (this.Auth.loggedIn()) {
+        if (this.state.loggedIn) {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
