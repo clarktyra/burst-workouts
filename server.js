@@ -70,6 +70,22 @@ app.get('/api/user', isAuthenticated, (req, res) => {
     }).catch(err => res.status(400).send(err));
 });
 
+// Updates the user's current workout streak
+app.put('/api/user/:id', isAuthenticated, (req, res) => {
+  db.User.findById(req.params.id, (err, user) => {
+    if (err) throw err;
+    let count = user.currentStreak;
+    const incrementer = (count) => {
+      return count + 1;
+    }
+    user.currentStreak = incrementer(count);
+    user.save((err) => {
+      if (err) throw err;
+      console.log('current streak updated');
+    })
+  })
+})
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

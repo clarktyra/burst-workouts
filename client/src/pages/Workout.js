@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 // import { Link } from 'react-router-dom';
 // import AuthService from './../components/AuthService';
-// import API from './../utils/API';
+import API from './../utils/API';
 import './Workout.css';
 import Timer from 'react-compound-timer';
 import workoutImg from '../images/workout-image.jpg'
@@ -11,11 +11,25 @@ class Workout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isRunning: false
+            isRunning: false,
+            username: '',
+            currentStreak: null,
+            id: ''
         }
 
         this.handleButton = this.handleButton.bind(this);
         this.handleEnd = this.handleEnd.bind(this);
+    }
+
+    componentDidMount() {
+        API.getUser(this.props.user.id)
+        .then(res => {
+            this.setState({
+                username: res.data.username,
+                currentStreak: res.data.currentStreak,
+                id: res.data.username.id
+            })
+        })
     }
 
     handleButton() {
@@ -25,7 +39,15 @@ class Workout extends Component {
     }
 
     handleEnd() {
-        alert('finished');
+        API.updateCurrentStreak(this.props.user.id)
+        .then(res => {
+            this.setState({
+                currentStreak: res.data.currentStreak
+            })
+        })
+        .catch(err => {
+            console.log(err, 'error fool!');
+        })
     }
 
     render() {
@@ -39,7 +61,7 @@ class Workout extends Component {
                         raises the torso and, often, the knees off the ground by pushing down with the palms: 
                         push-ups are usually done in a series by alternately straightening and bending the arms.</p>
                     <Timer 
-                        initialTime={5000} 
+                        initialTime={2000} 
                         direction='backward' 
                         startImmediately={false}  
                         onStart={this.handleButton} 

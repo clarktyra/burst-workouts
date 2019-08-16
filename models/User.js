@@ -25,7 +25,19 @@ const UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  currentStreak: {
+    type: Number,
+    required: true
+},
+longestStreak: {
+    type: Number,
+    required: true
+}
+  // workouts: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Workouts'
+  // }]
 });
 
 // Execute before each user.save() call
