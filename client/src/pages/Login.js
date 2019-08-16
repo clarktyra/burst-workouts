@@ -10,7 +10,8 @@ class Login extends Component {
 
   componentWillMount() {
     if (this.Auth.loggedIn()) {
-      this.props.history.replace('/');
+      this.props.history.replace('/home');
+
     }
   }
 
@@ -21,7 +22,10 @@ class Login extends Component {
       .then(res => {
         // once user is logged in
         // take them to their profile page
-        this.props.history.replace(`/home`);
+        //this.props.history.replace(`/home`);
+        window.location.reload();
+
+
       })
       .catch(err => {
         alert(err.response.data.message)

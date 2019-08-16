@@ -1,19 +1,57 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../AuthService';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+} from 'reactstrap';
 
-class Navbar extends Component {
+class Navibar extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
+        this.toggleNavbar = this.toggleNavbar.bind(this);
+        this.state = {
+            collapsed: true,
+            loggedIn: this.Auth.loggedIn()
+        };
     }
+   
+    toggleNavbar() {
+        this.setState({
+            collapsed: !this.state.collapsed
+        });
+    } 
+
+    
 
     showNavigation = () => {
-        if (this.Auth.loggedIn()) {
+        if (this.state.loggedIn) {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Profile</Link>
+                        <Link className="nav-link" to="/home">Home</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link" to="/workout">Workout</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link" to="/leaderboard">Leaderboard</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link" to="/profile">Feedback</Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link" to="/profile">Settings</Link>
                     </li>
                     <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
@@ -37,21 +75,28 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+
+            <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">React JWT App</Link>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mr-auto">
-                        </ul>
-                        {this.showNavigation()}
-                    </div>
+                    <Link className="navbar-brand" to="/home">Burst Workouts</Link>
+                    <Navbar color="faded" light>
+                        <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+                        <Collapse isOpen={!this.state.collapsed} navbar>
+                            {this.showNavigation()}
+                        </Collapse>
+                    </Navbar>
                 </div>
             </nav>
+
+
+
+
+
+
+
+
         )
     }
 }
 
-export default Navbar;
+export default Navibar;
