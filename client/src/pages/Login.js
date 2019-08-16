@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import AuthService from './../components/AuthService';
 import { Link } from 'react-router-dom';
+import workoutImg from '../images/workout-image.jpg'
+import './Login.css';
 
+
+const imgStyle = {
+  width: "100%"
+}
 class Login extends Component {
   constructor() {
     super();
@@ -41,31 +47,43 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1>Login</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email address:</label>
-            <input className="form-control"
-              placeholder="Email goes here..."
-              name="email"
-              type="email"
-              id="email"
-              onChange={this.handleChange} />
+      <div className="wrapper">
+      <div className="row">
+        <div className="container col-md-6">
+          <div className="headers">
+            <h1>WELCOME BACK </h1>
+            <h3>LOGIN AND CONTINUE YOUR STREAK</h3>
           </div>
-          <div className="form-group">
-            <label htmlFor="pwd">Password:</label>
-            <input className="form-control"
-              placeholder="Password goes here..."
-              name="password"
-              type="password"
-              id="pwd"
-              onChange={this.handleChange} />
-          </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-        <p><Link to="/signup">Go to Signup</Link></p>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email address:</label>
+              <input className="form-control"
+                placeholder="Email goes here..."
+                name="email"
+                type="email"
+                id="email"
+                onChange={this.handleChange} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="pwd">Password:</label>
+              <input className="form-control"
+                placeholder="Password goes here..."
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={this.handleChange} />
+            </div>
+            <button type="submit" className="btn btn-danger">Login</button>
+          </form>
+        </div>
       </div>
+      <br></br>
+        <div className="row">
+          <div className="container col-md-6 ">
+            <img style={imgStyle} src={workoutImg} />
+          </div>
+        </div>
+        </div>
 
     );
   }
