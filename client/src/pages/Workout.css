@@ -3,20 +3,35 @@
     font-family: digital-clock;
     }
     
-    /* @keyframes slide-top {
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slide-top {
+        0% {
+            -webkit-transform: translateY(400px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateY(0px);
+            opacity: 1;
+        }
+    }
+
+@keyframes scale-in-center {
     0% {
-        -webkit-transform: translateY(40px);
-                transform: translateY(40px);
+        -webkit-transform: scale(0);
+        opacity: 0;
     }
     100% {
-        -webkit-transform: translateY(0px);
-                transform: translateY(0px);
+        -webkit-transform: scale(1);
+        opacity: 1;
     }
-  } */
-
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
 }
 
 .workout-page-container {
@@ -26,10 +41,11 @@
     width: 100%;
     height: 100%;
     margin: 0;
-}  
+}
+
 .workout-page-card {
     color: rgb(187, 187, 194);
-    background: black;
+    background: rgb(0, 0, 0);
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: 30px;
@@ -37,7 +53,7 @@
     width: 600px;
     min-width: 400px;
     border-radius: 30px;
-    box-shadow: 25px 20px 15px #272626;
+    box-shadow: 25px 20px 15px rgb(39, 38, 38);
 }
 
 .workout-page-card p {
@@ -47,6 +63,7 @@
     font-weight: 100;
     line-height: 22px;
 }
+
 .workout-page-head {
     text-align: center;
     margin-top: 40px;
@@ -105,4 +122,76 @@
 
 button:focus {
     outline: 0;
+}
+
+.workout-pop-up {
+    background-image: url('../images/gold-textured-background.png');
+    position: fixed;
+    width: 500px;
+    min-width: 300px;
+    margin-top: 120px;
+    border-radius: 10px;
+    -webkit-animation: slide-top 0.7s ease-in both;
+}
+
+.arc {
+    position: relative;
+    display: block;
+    width: 480px;
+    height: 105px;
+    margin: 30px auto;
+    font-size: 60px;
+    -webkit-animation: scale-in-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+}
+
+.arc span {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 50px;
+    height: 300px;
+    margin-left: -25px;
+    line-height: 530px;
+    text-align: center;
+    transform-origin: bottom center;
+}
+
+.arc span:nth-of-type(1)  {
+    transform: translateX(-175px) translateY(5px) rotate(-35deg);
+}
+
+.arc span:nth-of-type(2)  {
+    transform: translateX(-125px) translateY(-10px) rotate(-25deg);
+}
+
+.arc span:nth-of-type(3)  {
+    transform: translateX(-75px) translateY(-25px) rotate(-15deg);
+}
+
+.arc span:nth-of-type(4)  {
+    transform: translateX(-25px) translateY(-35px) rotate(-5deg);
+}
+
+.arc span:nth-of-type(5)  {
+    transform: translateX(25px) translateY(-35px) rotate(5deg);
+}
+
+.arc span:nth-of-type(6)  {
+    transform: translateX(75px) translateY(-25px) rotate(15deg);
+}
+
+.arc span:nth-of-type(7)  {
+    transform: translateX(125px) translateY(-10px) rotate(20deg);
+}
+
+.arc span:nth-of-type(8)  {
+    transform: translateX(175px) translateY(5px) rotate(35deg);
+}
+
+.workout-pop-up h2 {
+    text-align: center;
+}
+
+.workout-pop-up p {
+    text-align: center;
 }
