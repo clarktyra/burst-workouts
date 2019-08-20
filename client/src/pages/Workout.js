@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import AuthService from './../components/AuthService';
 import API from './../utils/API';
 import './Workout.css';
@@ -12,6 +12,7 @@ class Workout extends Component {
         super(props);
         this.state = {
             isRunning: false,
+            isOver: false,
             username: '',
             currentStreak: null,
             id: ''
@@ -19,6 +20,7 @@ class Workout extends Component {
 
         this.handleButton = this.handleButton.bind(this);
         this.handleEnd = this.handleEnd.bind(this);
+        this.handlePopup = this.handlePopup.bind(this);
     }
 
     componentDidMount() {
@@ -50,9 +52,34 @@ class Workout extends Component {
         })
     }
 
+    handlePopup() {
+        this.setState({
+            isOver: !this.state.isOver
+        })
+    }
+
     render() {
         return (
             <div className='workout-page-container'>
+            {
+                this.state.isOver === true ?
+                <div className='workout-pop-up'>
+                    <div className='arc'>
+                        <span>C</span>
+                        <span>O</span>
+                        <span>N</span>
+                        <span>G</span>
+                        <span>R</span>
+                        <span>A</span>
+                        <span>T</span>
+                        <span>S</span>
+                    </div>
+                    <h2>Your workout is finished!</h2>
+                    <p>Head to the leaderboard and see your current streak.</p>
+                    <p><Link to="/leaderboard">Go to Leaderboard</Link></p>
+                </div> :
+                <div></div>
+            }
                 <div className='workout-page-card'>
                 <h1 className='workout-page-head'>PUSH-UPS</h1>
                     <img className='workout-image' src={workoutImg} alt='Push-up img'/>
@@ -70,6 +97,10 @@ class Workout extends Component {
                             [{
                                 time: 0,
                                 callback: this.handleEnd
+                            },
+                            {
+                                time: 0,
+                                callback: this.handlePopup
                             }]
                         }
                     >
