@@ -15,6 +15,7 @@ import Signup from './pages/Signup';
 import Navibar from './components/Navbar';
 import Home from './pages/Home';
 import Workout from './pages/Workout';
+import Landing from './pages/Landing';
 
 // Here is if we have an id_token in localStorage
 if (localStorage.getItem("id_token")) {
@@ -26,7 +27,7 @@ ReactDOM.render(
     <Router>
         <div>
             <Navibar />
-            <Route exact path="/" component={App} />
+            <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/profile" component={Profile} />
