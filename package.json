@@ -30,6 +30,7 @@
     "react": "^16.9.0",
     "react-compound-timer": "^1.1.4",
     "react-transition-group": "^4.2.2",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.0.1",
+    "styled-components": "^4.3.2"
   }
 }
