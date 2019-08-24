@@ -14,9 +14,7 @@ class Workout extends Component {
             isOver: false,
             username: '',
             currentStreak: null,
-            id: '',
-            title: '',
-            alt: ''
+            id: ''
         }
 
         this.handleButton = this.handleButton.bind(this);
@@ -32,7 +30,7 @@ class Workout extends Component {
                     currentStreak: res.data.currentStreak,
                     id: res.data.username.id
                 })
-            })
+            });
         let randomizer = Math.floor((Math.random() * workouts.length));
         this.setState({
             title: workouts[randomizer].title,
@@ -68,10 +66,11 @@ class Workout extends Component {
     }
 
     render() {
+        const { isRunning, isOver, title, description, targets, image, alt } = this.state;
         return (
             <div className='workout-page-container'>
                 {
-                    this.state.isOver === true ?
+                    isOver === true ?
                         <div className='workout-pop-up'>
                             <div className='arc'>
                                 <span>C</span>
@@ -84,16 +83,16 @@ class Workout extends Component {
                                 <span>S</span>
                             </div>
                             <h2>Your workout is finished!</h2>
-                            <p>Head to the leaderboard and see your current streak.</p>
+                            <p>Head to the Leaderboard and see your current streak.</p>
                             <p><Link to="/leaderboard">Go to Leaderboard</Link></p>
                         </div> :
                         <div></div>
                 }
                 <div className='workout-page-card'>
-                <h1 className='workout-page-head'>{this.state.title}</h1>
-                    <img className='workout-image' src={this.state.image} alt={this.state.alt}/>
-                    <p style={{marginTop: '50px'}} ><strong>Targets: </strong>{this.state.targets}</p>
-                    <p><strong>Description: </strong><br /><br />{this.state.description}</p>
+                <h1 className='workout-page-head'>{title}</h1>
+                    <img className='workout-image' src={image} alt={alt}/>
+                    <p style={{marginTop: '50px'}}><strong>Targets: </strong>{targets}</p>
+                    <p><strong>Description: </strong>{description}</p>
                     <Timer 
                         initialTime={2000} 
                         direction='backward' 
@@ -115,14 +114,14 @@ class Workout extends Component {
                             <React.Fragment>
                                 <div
                                     className='timer'
-                                    style={this.state.isRunning === false ? ({ color: 'rgb(82, 82, 82)' }) : ({ color: 'rgb(239, 239, 241)' })}
+                                    style={isRunning === false ? ({ color: 'rgb(82, 82, 82)' }) : ({ color: 'rgb(239, 239, 241)' })}
                                 >
                                     <Timer.Minutes />:
                                         <Timer.Seconds formatValue={(value) => value < 10 ? `0${value}` : value} />
                                 </div>
                                 <div className='botton-container'>
                                     {
-                                        this.state.isRunning === false ?
+                                        isRunning === false ?
                                             <button onClick={start} className='button-start'>START YOUR WORKOUT</button> :
                                             <button onClick={stop} className='button-stop'>STOP YOUR WORKOUT</button>
                                     }
