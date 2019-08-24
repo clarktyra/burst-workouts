@@ -14,7 +14,9 @@ class Workout extends Component {
             isOver: false,
             username: '',
             currentStreak: null,
-            id: ''
+            id: '',
+            title: '',
+            alt: ''
         }
 
         this.handleButton = this.handleButton.bind(this);
