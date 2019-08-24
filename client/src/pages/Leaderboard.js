@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
+import './styles/Leaderboard.css';
 import API from './../utils/API';
-import { Link } from 'react-router-dom';
 
 class Leaderboard extends Component {
   constructor(props) {
     super(props)
     this.state = {
       username: "",
+      currentStreak: null,
       users: []
     }
 
@@ -26,30 +27,32 @@ class Leaderboard extends Component {
   }
 
   componentDidMount() {
-    let currentCounter = 0;
     let longestCounter = 10;
-    let currentStreak;
-    let longestStreak;
     API.getUsers(this.props.users)
       .then(res => {
         let callUsers = res.data;
         callUsers.map(addToUser => {
           return Object.assign(
             addToUser,
-            { longestStreak: this.randomStreak(longestCounter), currentStreak: this.incrementer(currentCounter) }
+            { longestStreak: this.randomStreak(longestCounter) }
           )
         })
         this.setState({
           users: callUsers
         })
       })
+    API.getUser(this.props.user.id).then(res => {
+      this.setState({
+        username: res.data.username,
+        currentStreak: res.data.currentStreak
+      })
+    });
   }
 
   render() {
-    const { users } = this.state;
+    const { users, username, currentStreak } = this.state;
     return (
       <div className="leaderboard-container">
-        <Link to="/">Go Home</Link>
         <table>
           <tbody>
             <tr>
@@ -57,22 +60,21 @@ class Leaderboard extends Component {
               <th>Current Streak</th>
               <th>Longest Streak</th>
             </tr>
-            <tr>
-              <td>Bob</td>
-              <td>2 days</td>
-              <td>5 days</td>
-            </tr>
             {
               users.map(user => (
                 <tr key={user._id}>
                   <td>{user.username}</td>
-                  <td>{user.currentStreak}</td>
+                  <td>{user.currentStreak > 1 || user.currentStreak === 0 ? `${user.currentStreak} days` : `${user.currentStreak} day`}</td>
                   <td>{user.longestStreak}</td>
                 </tr>
               ))
             }
           </tbody>
         </table>
+        <div className="user-container">
+          <h3>Welcome: <br />{username}</h3>
+          <h3>CurrentStreak: <br />{currentStreak > 1 || currentStreak === 0 ? `${currentStreak} days` : `${currentStreak} day`}</h3>
+        </div>
       </div>
     )
   }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import AuthService from './../components/AuthService';
 import API from './../utils/API';
-import './Signup.css';
+import './styles/Signup.css';
 
-import workoutImg from '../images/workout-image.jpg'
-import jumpropeImg from '../images/with-jump-rope.jpg'
+// import workoutImg from '../images/workout-image.jpg';
+import jumpropeImg from '../images/with-jump-rope.jpg';
 
 
 const imgStyle = {
@@ -90,7 +90,7 @@ class Signup extends Component {
         <br></br>
         <div className="row">
           <div className="container col-md-6 ">
-            <img style={imgStyle} src={jumpropeImg} />
+            <img style={imgStyle} src={jumpropeImg} alt="woman jumping rope" />
           </div>
         </div>
         <br></br>
