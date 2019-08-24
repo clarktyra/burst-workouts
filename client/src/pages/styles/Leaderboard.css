@@ -1,0 +1,35 @@
+.leaderboard-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  grid-column: 2/4;
+  grid-row: 1;
+  margin: 2rem ;
+}
+
+td, th {
+  border: 1px solid #DC3545;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(218, 114, 125);
+}
+
+.user-container {
+  margin: 2rem 1rem;
+  border: 1px solid #DC3545;
+}
+
+.user-container h3 {
+  padding: 1rem;
+  font-size: 15px;
+  text-align: center;
+}

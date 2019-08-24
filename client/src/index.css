@@ -3,30 +3,4 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-image: url('../src/images/textured-background.png');
-
-}
-
-
-.leaderboard-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  grid-column: 2/3;
-  grid-row: 3;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
 }

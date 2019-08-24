@@ -1,5 +1,5 @@
 @font-face {
-    src: url('../fonts/digital-7/digital-7 (mono).ttf');
+    src: url('../../fonts/digital-7/digital-7 (mono).ttf');
     font-family: digital-clock;
     }
     
@@ -37,7 +37,7 @@
 .workout-page-container {
     display: flex;
     justify-content: center;
-    background-image: url('../images/textured-background.png');
+    background-image: url('../../images/textured-background.png');
     width: 100%;
     height: 100%;
     margin: 0;
@@ -125,7 +125,7 @@ button:focus {
 }
 
 .workout-pop-up {
-    background-image: url('../images/gold-textured-background.png');
+    background-image: url('../../images/gold-textured-background.png');
     position: fixed;
     width: 500px;
     min-width: 300px;

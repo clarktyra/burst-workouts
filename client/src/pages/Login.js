@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AuthService from './../components/AuthService';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import workoutImg from '../images/workout-image.jpg'
-import './Login.css';
+import './styles/Login.css';
 
 
 const imgStyle = {
@@ -80,7 +80,7 @@ class Login extends Component {
       <br></br>
         <div className="row">
           <div className="container col-md-6 ">
-            <img style={imgStyle} src={workoutImg} />
+            <img style={imgStyle} src={workoutImg} alt="workout" />
           </div>
         </div>
         </div>
