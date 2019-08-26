@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import { Link } from 'react-router-dom';
-// import AuthService from './../components/AuthService';
 import API from './../utils/API';
 import './styles/Workout.css';
 import Timer from 'react-compound-timer';
-import workoutImg from '../images/workout-image.jpg'
+import { workouts } from '../utils/workout-data';
 
 class Workout extends Component {
     constructor(props) {
@@ -31,7 +30,15 @@ class Workout extends Component {
                     currentStreak: res.data.currentStreak,
                     id: res.data.username.id
                 })
-            })
+            });
+        let randomizer = Math.floor((Math.random() * workouts.length));
+        this.setState({
+            title: workouts[randomizer].title,
+            image: workouts[randomizer].image,
+            description: workouts[randomizer].description,
+            targets: workouts[randomizer].targets,
+            alt: workouts[randomizer].alt
+        })
     }
 
     handleButton() {
@@ -59,10 +66,11 @@ class Workout extends Component {
     }
 
     render() {
+        const { isRunning, isOver, title, description, targets, image, alt } = this.state;
         return (
             <div className='workout-page-container'>
                 {
-                    this.state.isOver === true ?
+                    isOver === true ?
                         <div className='workout-pop-up'>
                             <div className='arc'>
                                 <span>C</span>
@@ -75,23 +83,21 @@ class Workout extends Component {
                                 <span>S</span>
                             </div>
                             <h2>Your workout is finished!</h2>
-                            <p>Head to the leaderboard and see your current streak.</p>
+                            <p>Head to the Leaderboard and see your current streak.</p>
                             <p><Link to="/leaderboard">Go to Leaderboard</Link></p>
                         </div> :
                         <div></div>
                 }
                 <div className='workout-page-card'>
-                    <h1 className='workout-page-head'>PUSH-UPS</h1>
-                    <img className='workout-image' src={workoutImg} alt='Push-up img' />
-                    <p style={{ marginTop: '50px' }} ><strong>Targets:</strong> Chest, arms, shoulders, core</p>
-                    <p><strong>Description: </strong><br /><br /> An exercise in which a person lying face down, with the hands under the shoulders,
-                        raises the torso and, often, the knees off the ground by pushing down with the palms:
-                        push-ups are usually done in a series by alternately straightening and bending the arms.</p>
-                    <Timer
-                        initialTime={2000}
-                        direction='backward'
-                        startImmediately={false}
-                        onStart={this.handleButton}
+                <h1 className='workout-page-head'>{title}</h1>
+                    <img className='workout-image' src={image} alt={alt}/>
+                    <p style={{marginTop: '50px'}}><strong>Targets: </strong>{targets}</p>
+                    <p><strong>Description: </strong>{description}</p>
+                    <Timer 
+                        initialTime={2000} 
+                        direction='backward' 
+                        startImmediately={false}  
+                        onStart={this.handleButton} 
                         onStop={this.handleButton}
                         checkpoints={
                             [{
@@ -108,14 +114,14 @@ class Workout extends Component {
                             <React.Fragment>
                                 <div
                                     className='timer'
-                                    style={this.state.isRunning === false ? ({ color: 'rgb(82, 82, 82)' }) : ({ color: 'rgb(239, 239, 241)' })}
+                                    style={isRunning === false ? ({ color: 'rgb(82, 82, 82)' }) : ({ color: 'rgb(239, 239, 241)' })}
                                 >
                                     <Timer.Minutes />:
                                         <Timer.Seconds formatValue={(value) => value < 10 ? `0${value}` : value} />
                                 </div>
                                 <div className='botton-container'>
                                     {
-                                        this.state.isRunning === false ?
+                                        isRunning === false ?
                                             <button onClick={start} className='button-start'>START YOUR WORKOUT</button> :
                                             <button onClick={stop} className='button-stop'>STOP YOUR WORKOUT</button>
                                     }

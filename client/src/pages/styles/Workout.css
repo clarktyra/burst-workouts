@@ -2,26 +2,36 @@
     src: url('../../fonts/digital-7/digital-7 (mono).ttf');
     font-family: digital-clock;
     }
-    
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
+
+@font-face {
+    src: url('../../fonts/kc-fonts_headliner/workout-header.ttf');
+    font-family: block-header;
+}
+
+@font-face {
+    src: url('../../fonts/ardyanatypes_fontania/Fontania.ttf');
+    font-family: sharpie
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
     }
-    
-    @keyframes slide-top {
-        0% {
-            -webkit-transform: translateY(400px);
-            opacity: 0;
-        }
-        100% {
-            -webkit-transform: translateY(0px);
-            opacity: 1;
-        }
+    100% {
+        opacity: 1;
     }
+}
+
+@keyframes slide-top {
+    0% {
+        -webkit-transform: translateY(400px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        opacity: 1;
+    }
+}
 
 @keyframes scale-in-center {
     0% {
@@ -67,16 +77,18 @@
 .workout-page-head {
     text-align: center;
     margin-top: 40px;
-    color: rgb(247, 247, 247);
+    color: rgb(187, 187, 194);
+    font-family: block-header;
+    font-size: 100px;
 }
 
 .workout-image {
     display: block;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    height: 280px;
-    width: 400px;
+    height: 300px;
+    width: 480px;
     border-radius: 10px;
     animation: fadeIn ease 5s;
     -webkit-animation: fadeIn ease 5s;
@@ -107,7 +119,6 @@
     color: rgb(239, 239, 241);
 }
 
-
 .button-stop {
     background: rgb(176, 80, 102);
     margin-left: 30px;
@@ -125,13 +136,16 @@ button:focus {
 }
 
 .workout-pop-up {
-    background-image: url('../../images/gold-textured-background.png');
+    background-image: url('../../images/popup-textured-background.png');
     position: fixed;
     width: 500px;
     min-width: 300px;
     margin-top: 120px;
     border-radius: 10px;
+    color: rgb(32, 32, 32);
+    font-family: Trebuchet MS, sans-serif;
     -webkit-animation: slide-top 0.7s ease-in both;
+    animation: slide-top 0.7s ease-in both;
 }
 
 .arc {
@@ -139,9 +153,14 @@ button:focus {
     display: block;
     width: 480px;
     height: 105px;
-    margin: 30px auto;
-    font-size: 60px;
+    margin-top: 50px;
+    color: rgb(32, 32, 32);
+    font-size: 90px;
+    font-weight: 500;
+    font-family: sharpie, sans-serif;
+    text-shadow: 3px 3px 3px rgb(0, 0, 0);
     -webkit-animation: scale-in-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+    animation: scale-in-center 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 }
 
 .arc span {
@@ -189,7 +208,9 @@ button:focus {
 }
 
 .workout-pop-up h2 {
+    margin-top: 20px;
     text-align: center;
+    font-size: 35px;
 }
 
 .workout-pop-up p {
