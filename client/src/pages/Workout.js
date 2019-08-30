@@ -50,15 +50,7 @@ class Workout extends Component {
     }
 
     handleEnd() {
-        API.updateCurrentStreak(this.props.user.id)
-            // .then(res => {
-            //     this.setState({
-            //         lastWorkout: res.data.lastWorkout
-            //     })
-            // })
-            // .catch(err => {
-            //     console.log(err, 'error fool!');
-            // })
+        API.updateCurrentStreak(this.props.user.id);
     }
 
     handlePopup() {
