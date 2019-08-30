@@ -14,9 +14,7 @@ class Workout extends Component {
             isRunning: false,
             isOver: false,
             lastWorkout: '',
-            canWorkout: true,
             username: '',
-            currentStreak: null,
             id: '',
             todaysDate: moment().format('YYYY-MM-DD')
         }
@@ -31,7 +29,6 @@ class Workout extends Component {
             .then(res => {
                 this.setState({
                     username: res.data.username,
-                    currentStreak: res.data.currentStreak,
                     id: res.data.username.id,
                     lastWorkout: res.data.lastWorkout
                 })
@@ -54,15 +51,14 @@ class Workout extends Component {
 
     handleEnd() {
         API.updateCurrentStreak(this.props.user.id)
-            .then(res => {
-                this.setState({
-                    currentStreak: res.data.currentStreak,
-                    lastWorkout: res.data.lastWorkout
-                })
-            })
-            .catch(err => {
-                console.log(err, 'error fool!');
-            })
+            // .then(res => {
+            //     this.setState({
+            //         lastWorkout: res.data.lastWorkout
+            //     })
+            // })
+            // .catch(err => {
+            //     console.log(err, 'error fool!');
+            // })
     }
 
     handlePopup() {
