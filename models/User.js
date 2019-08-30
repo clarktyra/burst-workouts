@@ -29,15 +29,15 @@ const UserSchema = new Schema({
   currentStreak: {
     type: Number,
     required: true
-},
-longestStreak: {
+  },
+  longestStreak: {
     type: Number,
     required: true
-}
-  // workouts: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Workouts'
-  // }]
+  },
+  lastWorkout: {
+    type: String,
+    required: false
+  }
 });
 
 // Execute before each user.save() call

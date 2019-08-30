@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const db = require('./models');
+const moment = require('moment');
 const PORT = process.env.PORT || 3001;
 
 const isAuthenticated = require("./config/isAuthenticated");
@@ -78,13 +79,24 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
     const incrementer = (count) => {
       return count + 1;
     }
+    user.lastWorkout = moment().format('YYYY-MM-DD');
     user.currentStreak = incrementer(count);
     user.save((err) => {
       if (err) throw err;
-      console.log('current streak updated');
+      console.log('current streak updated and last workout updated');
     })
   })
 })
+
+// Updates date of last workout
+// app.put('/api/user/:id', isAuthenticated, (req, res) => {
+//   db.User.findById(req.params.id, (err, user) => {
+//     if (err) throw err;
+//     user.lastWorkout = moment().format('YYYY-MM-DD');
+//     if (err) throw err;
+//     console.log('last workout updated')
+//   })
+// })
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
