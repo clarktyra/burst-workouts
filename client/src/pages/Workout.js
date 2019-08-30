@@ -5,6 +5,7 @@ import API from './../utils/API';
 import './styles/Workout.css';
 import Timer from 'react-compound-timer';
 import { workouts } from '../utils/workout-data';
+import moment from 'moment';
 
 class Workout extends Component {
     constructor(props) {
@@ -12,11 +13,12 @@ class Workout extends Component {
         this.state = {
             isRunning: false,
             isOver: false,
+            lastWorkout: '',
+            canWorkout: true,
             username: '',
             currentStreak: null,
             id: '',
-            title: '',
-            alt: ''
+            todaysDate: moment().format('YYYY-MM-DD')
         }
 
         this.handleButton = this.handleButton.bind(this);
@@ -30,7 +32,8 @@ class Workout extends Component {
                 this.setState({
                     username: res.data.username,
                     currentStreak: res.data.currentStreak,
-                    id: res.data.username.id
+                    id: res.data.username.id,
+                    lastWorkout: res.data.lastWorkout
                 })
             });
         let randomizer = Math.floor((Math.random() * workouts.length));
@@ -53,7 +56,8 @@ class Workout extends Component {
         API.updateCurrentStreak(this.props.user.id)
             .then(res => {
                 this.setState({
-                    currentStreak: res.data.currentStreak
+                    currentStreak: res.data.currentStreak,
+                    lastWorkout: res.data.lastWorkout
                 })
             })
             .catch(err => {
@@ -68,7 +72,13 @@ class Workout extends Component {
     }
 
     render() {
-        const { isRunning, isOver, title, description, targets, image, alt } = this.state;
+        const { isRunning, isOver, lastWorkout, todaysDate, title, description, targets, image, alt } = this.state;
+        if (lastWorkout === todaysDate) {
+            return (
+                <div><h1>Thanks for working out today. Come back again tomorrow!</h1></div>
+            )
+        }
+
         return (
             <div className='workout-page-container'>
                 {
@@ -129,8 +139,7 @@ class Workout extends Component {
                                     }
                                 </div>
                             </React.Fragment>
-                        )
-                        }
+                        )}
                     </Timer>
                 </div>
             </div>
