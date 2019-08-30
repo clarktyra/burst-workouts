@@ -14,7 +14,8 @@ export default {
       email: email,
       password: password,
       currentStreak: 0,
-      longestStreak: 0
+      longestStreak: 0,
+      lastWorkout: ''
     });
   },
   // Updates current streak

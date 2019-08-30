@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const db = require('./models');
+const moment = require('moment');
 const PORT = process.env.PORT || 3001;
 
 const isAuthenticated = require("./config/isAuthenticated");
@@ -74,14 +75,21 @@ app.get('/api/user', isAuthenticated, (req, res) => {
 app.put('/api/user/:id', isAuthenticated, (req, res) => {
   db.User.findById(req.params.id, (err, user) => {
     if (err) throw err;
-    let count = user.currentStreak;
+    let todaysDate = moment().format('YYYY-MM-DD');
     const incrementer = (count) => {
       return count + 1;
     }
-    user.currentStreak = incrementer(count);
+    user.currentStreak = incrementer(user.currentStreak);
+    if (user.lastWorkout !== moment(todaysDate).subtract(1, 'day').format('YYYY-MM-DD')) {
+      user.currentStreak = 1;
+    } 
+    if (user.currentStreak > user.longestStreak) {
+      user.longestStreak = user.currentStreak;
+    }
+    user.lastWorkout = todaysDate;  
     user.save((err) => {
       if (err) throw err;
-      console.log('current streak updated');
+      console.log('current streak and last workout updated');
     })
   })
 })
