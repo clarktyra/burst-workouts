@@ -1,3 +1,42 @@
 /* body {
     background-image: url('../images/apartment.jpg');
 } */
+
+#one-card {
+    background-color: black
+}
+
+#two-card {
+background-color: red
+}
+
+/* Container holding the image and the text */
+.container2 {
+    position: relative;
+    text-align: center;
+    color: black;
+  }
+  
+  /* Top left text */
+  .top-left {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Top right text */
+  .top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  
+  
+  /* Centered text */
+  .centered {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
