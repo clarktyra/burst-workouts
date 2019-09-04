@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import apartment from '../images/apartment.jpg'
 import styled from 'styled-components';
 import './Landing.css';
-import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstrap';
+import {CardBody, Card, CardTitle, CardText } from 'reactstrap';
 
 
 const Picture = styled.img`
@@ -24,15 +24,15 @@ class Landing extends Component {
     render() {
         return (
             <div>
-                <div class="container">
-                <div class="container2" style={cardStyle} >
+                <div className="container">
+                <div className="container2" style={cardStyle} >
                     <Picture src={apartment} />
-                    <div class="top-left"> </div>
-                    <div class="top-right">Sign up Today!</div>
-                    <div class="centered" style={titleStyle}>The best way to consistently workout</div>
+                    <div className="top-left"> </div>
+                    <div className="top-right">Sign up Today!</div>
+                    <div className="centered" style={titleStyle}>The best way to consistently workout</div>
                 </div>
-                    <div class="row">
-                        <div class="col-sm">
+                    <div className="row">
+                        <div className="col-sm">
                             <Card id="one-card" style={cardStyle}>
                                 <CardBody>
                                     <CardTitle style={titleStyle}>What to expect</CardTitle>
@@ -41,7 +41,7 @@ class Landing extends Component {
                                 </CardBody>
                             </Card>
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                             <Card id="two-card" className="card" style={cardStyle}>
                                 <CardBody>
                                     <CardTitle style={titleStyle}>The Burst Streak Method</CardTitle>
@@ -51,7 +51,7 @@ class Landing extends Component {
                             </Card>
 
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                             <Card id="one-card" className="card" style={cardStyle}>
                                 <CardBody>
                                     <CardTitle style={titleStyle}>Online Comunity</CardTitle>
