@@ -1,20 +1,32 @@
 #first-card {
-    background: rgb(255, 102, 0)
+    background: black;
+    font-family: 'Palatino, serif'
+
 }
 #middle-card {
-    background: rgba(255, 153, 0, 0.815)
+    background: #dc3545;
+    font-family: 'Palatino, serif'
+
 }
 #last-card {
-    background: rgb(76, 0, 255);
+    background: black;
+    font-family: 'Palatino, serif'
     
 
 }
 
 .card {
+    background: black;
     color:white;
     box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
     padding: 2px 16px;
+    font-family: 'Palatino, serif'
+
     
+}
+
+h1, Button {
+    font-family: 'Palatino, serif'
 }
 
 .card:hover { box-shadow: 0px 0px 4px 2px #f0ff17}

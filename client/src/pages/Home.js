@@ -5,6 +5,10 @@ import API from './../utils/API';
 // import { link } from 'react-router-dom';
 import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstrap';
 
+const titleStyle = {
+  fontSize: '30px',
+  textAlign: 'center'
+}
 
 class Home extends Component {
   constructor(props) {
@@ -12,7 +16,7 @@ class Home extends Component {
     this.state = {
       username: "",
       email: "",
-      currentDaysInRow: 6,
+      currentDaysInRow: null,
       highestDaysInRow: 2,
       totalDaysInRow: 3,
       collapse: false
@@ -25,7 +29,8 @@ class Home extends Component {
     API.getUser(this.props.user.id).then(res => {
       this.setState({
         username: res.data.username,
-        email: res.data.email
+        email: res.data.email, 
+        currentDaysInRow: res.data.currentStreak
       })
     });
   }
@@ -37,17 +42,20 @@ class Home extends Component {
   setHover = () => {this.setState({hovered: true})}
   cancelHover = () => {this.setState({hovered: false})}
 
+  
+
 
   render() {
     return (
       <div>
-        <h1>Welcome {this.state.username} to your home page</h1>
+        
         <div class="container">
+        <h1>Welcome {this.state.username} to your home page</h1>
           <div class="row">
             <div class="col-sm">
               <Card id="first-card" className="card">
                 <CardBody>
-                  <CardTitle>{this.state.currentDaysInRow}</CardTitle>
+                  <CardTitle style={titleStyle}>{this.state.currentDaysInRow}</CardTitle>
                   <CardText> You have done a burst workout {this.state.currentDaysInRow} 
                   {(this.state.currentDaysInRow) > 1 ? " days " : " day "}
                   in a row
@@ -59,7 +67,7 @@ class Home extends Component {
             <div className="col-sm">
               <Card id="middle-card" className="card">
                 <CardBody>
-                  <CardTitle>{this.state.highestDaysInRow}</CardTitle>
+                  <CardTitle style={titleStyle}>{this.state.highestDaysInRow}</CardTitle>
                   <CardText> Your longest workout streak is {this.state.highestDaysInRow} 
                   {(this.state.highestDaysInRow) > 1 ? " days " : " day "}
                   </CardText>
@@ -70,19 +78,18 @@ class Home extends Component {
             <div className="col-sm">
               <Card id="last-card" className="card">
                 <CardBody>
-                  <CardTitle>{this.state.totalDaysInRow}</CardTitle>
+                  <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
                   <CardText> Your total number of burst workouts is {this.state.totalDaysInRow}
                   </CardText>
                 </CardBody>
               </Card>
             </div>
           </div>
-        </div>
-        <br />
-
-        <Button color="danger">Click here for today's workout</Button>
+          <br/>
         <br/>
-        <br/>
+          <Button color="warning">Click here for today's workout</Button>
+          <br/>
+          <br/>
 
         <Button color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
         <Collapse isOpen={this.state.collapse}>
@@ -92,6 +99,10 @@ class Home extends Component {
             </CardBody>
           </Card>
         </Collapse>
+        </div>
+        <br />
+
+        
         
 
       </div>
