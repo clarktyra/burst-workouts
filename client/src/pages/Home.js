@@ -53,7 +53,7 @@ class Home extends Component {
       <div>
         
         <div class="container">
-        <h1>Welcome {this.state.username} to your home page</h1>
+        <h1>Welcome {this.state.username},</h1>
           <div class="row">
             <div class="col-sm">
               <Card id="first-card" className="card">
