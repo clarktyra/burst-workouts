@@ -12,3 +12,7 @@
 .App-intro {
   font-size: large;
 }
+
+.navbar-brand img {
+  height: 2.3rem;
+}

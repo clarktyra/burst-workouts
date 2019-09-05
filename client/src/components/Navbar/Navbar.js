@@ -78,7 +78,7 @@ class Navibar extends Component {
 
 			<nav className="navbar navbar-expand-lg navbar-dark bg-danger">
 				<div className="container">
-					<Link className="navbar-brand" to="/home">Burst Workouts</Link>
+					<Link className="navbar-brand" to="/home"><img src={require('../../images/burstworkouts.png')} /></Link>
 					<Navbar color="faded" light>
 						<NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
 						<Collapse isOpen={!this.state.collapsed} navbar>
