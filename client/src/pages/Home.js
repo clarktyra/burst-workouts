@@ -4,6 +4,8 @@ import './styles/Home.css'
 import API from './../utils/API';
 // import { link } from 'react-router-dom';
 import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
 
 const titleStyle = {
   fontSize: '30px',
@@ -17,7 +19,7 @@ class Home extends Component {
       username: "",
       email: "",
       currentDaysInRow: null,
-      highestDaysInRow: 2,
+      highestDaysInRow: null,
       totalDaysInRow: 3,
       collapse: false
     };
@@ -30,7 +32,8 @@ class Home extends Component {
       this.setState({
         username: res.data.username,
         email: res.data.email, 
-        currentDaysInRow: res.data.currentStreak
+        currentDaysInRow: res.data.currentStreak, 
+        highestDaysInRow: res.data.longestStreak
       })
     });
   }
@@ -87,7 +90,11 @@ class Home extends Component {
           </div>
           <br/>
         <br/>
-          <Button color="warning">Click here for today's workout</Button>
+          
+          <Link to="/workout"><Button color="warning">Click here for today's workout </Button></Link>
+
+            
+          
           <br/>
           <br/>
 
