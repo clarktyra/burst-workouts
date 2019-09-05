@@ -34,4 +34,4 @@ export const workouts = [
         description: 'A lower body exercise that involves stepping and bending your front and back leg. Stand straight up facing forward with your spine and pelvis in a neutral position. Take a long enough step so when you bend your knee it is forward of the toe, bend your back knee until it almost touches the floor, keep your torso and spine in a neutral position, then return to your starting position. ',
         targets: 'Quads, glutes, hamstrings, calfs, abs, back.'
     }
-]
+];

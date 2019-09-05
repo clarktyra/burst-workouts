@@ -12,3 +12,11 @@
 .App-intro {
   font-size: large;
 }
+
+.navbar {
+  background-color: #000000;
+}
+
+.navbar-brand img {
+  height: 2.3rem;
+}
