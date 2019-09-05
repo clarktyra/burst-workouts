@@ -52,10 +52,10 @@ class Home extends Component {
     return (
       <div>
         
-        <div class="container">
-        <h1>Welcome {this.state.username},</h1>
-          <div class="row">
-            <div class="col-sm">
+        <div className="container">
+        <h1 id="welcomeTitle">Welcome {this.state.username},</h1>
+          <div className="row">
+            <div className="col-sm">
               <Card id="first-card" className="card">
                 <CardBody>
                   <CardTitle style={titleStyle}>{this.state.currentDaysInRow}</CardTitle>
@@ -91,14 +91,14 @@ class Home extends Component {
           <br/>
         <br/>
           
-          <Link to="/workout"><Button color="warning">Click here for today's workout </Button></Link>
+          <Link to="/workout"><Button className="homeButtons" color="warning">Click here for today's workout </Button></Link>
 
             
           
           <br/>
           <br/>
 
-        <Button color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
+        <Button className="homeButtons" color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
         <Collapse isOpen={this.state.collapse}>
           <Card>
             <CardBody>
