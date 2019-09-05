@@ -62,11 +62,27 @@ class Workout extends Component {
     render() {
         const { isRunning, isOver, lastWorkout, todaysDate, title, description, targets, image, alt } = this.state;
         if (lastWorkout === todaysDate) {
+            // This is what renders when the user has already worked out today.
             return (
-                <div><h1>Thanks for working out today. Come back again tomorrow!</h1></div>
+                <div className='alternate-workout-container'>
+                    <h1>Thanks for working out today.</h1>
+                    <h2>You may continue to work out if you wish but it won't count towards your current streaks. Here is a list of our workouts...</h2>
+                    <div className='workouts'>
+                        {
+                            workouts.map((workout) => 
+                                <div className='workout'>
+                                    <h3>{workout.title}</h3>
+                                    <img src={workout.image} alt={workout.alt}/>
+                                    <p style={{marginTop: '15px'}}><strong>Targets: </strong>{workout.targets}</p>
+                                    <p><strong>Description: </strong>{workout.description}</p>
+                                </div>
+                            )
+                        }
+                    </div>
+                </div>
             )
         }
-
+        // This is what renders when the user has not worked out today.
         return (
             <div className='workout-page-container'>
                 {
@@ -89,7 +105,7 @@ class Workout extends Component {
                         <div></div>
                 }
                 <div className='workout-page-card'>
-                <h1 className='workout-page-head'>{title}</h1>
+                    <h1 className='workout-page-head'>{title}</h1>
                     <img className='workout-image' src={image} alt={alt}/>
                     <p style={{marginTop: '50px'}}><strong>Targets: </strong>{targets}</p>
                     <p><strong>Description: </strong>{description}</p>
