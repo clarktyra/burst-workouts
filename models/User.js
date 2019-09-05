@@ -34,6 +34,10 @@ const UserSchema = new Schema({
     type: Number,
     required: true
   },
+  totalWorkouts: {
+    type: Number,
+    required: true
+  },
   lastWorkout: {
     type: String,
     required: false
