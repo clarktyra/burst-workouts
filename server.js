@@ -80,6 +80,7 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
       return count + 1;
     }
     user.currentStreak = incrementer(user.currentStreak);
+    user.totalWorkouts = incrementer(user.totalWorkouts);
     if (user.lastWorkout !== moment(todaysDate).subtract(1, 'day').format('YYYY-MM-DD')) {
       user.currentStreak = 1;
     } 
