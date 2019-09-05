@@ -25,11 +25,7 @@
     
 }
 
-<<<<<<< HEAD
 #welcomeTitle, .homeButtons {
-=======
-h1, Button {
->>>>>>> put everything in one container, changed the colors, connected the current streak to the database
     font-family: 'Palatino, serif'
 }
 
