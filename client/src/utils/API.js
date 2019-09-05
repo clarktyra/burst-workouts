@@ -15,6 +15,7 @@ export default {
       password: password,
       currentStreak: 0,
       longestStreak: 0,
+      totalWorkouts: 0,
       lastWorkout: ''
     });
   },
