@@ -65,8 +65,8 @@ class Workout extends Component {
             // This is what renders when the user has already worked out today.
             return (
                 <div className='alternate-workout-container'>
-                    <h1>Thanks for working out today.</h1>
-                    <h2>You may continue to work out if you wish but it won't count towards your current streaks. Here is a list of our workouts...</h2>
+                    <h1>Thanks for working out today!</h1>
+                    <h2>You may continue to work out if you'd like but it won't count towards your current streaks. Here is a list of our workouts...</h2>
                     <div className='workouts'>
                         {
                             workouts.map((workout) => 
@@ -126,7 +126,7 @@ class Workout extends Component {
                             }]
                         }
                     >
-                        {({ start, stop, timerState }) => (
+                        {({ start, stop }) => (
                             <React.Fragment>
                                 <div
                                     className='timer'

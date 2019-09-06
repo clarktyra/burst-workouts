@@ -131,18 +131,27 @@ button:focus {
     outline: 0;
 }
 
-.alternate-workout-container h1{
+.alternate-workout-container h1 {
     text-align: center;
+    font-family: sharpie;
+    color: black;
     margin-top: 50px;
+    font-size: 100px;
+    font-weight: 600;
+}
+
+.alternate-workout-container h2 {
+    text-align: center;
+    font-family: Trebuchet MS, sans-serif;;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .workouts {
-    display: grid;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
 }
 
 .workouts h3 {
@@ -170,11 +179,10 @@ button:focus {
     color: rgb(187, 187, 194);
     background: rgb(0, 0, 0);
     margin-top: 50px;
-    margin-bottom: 0px;
     margin-left: 20px;
     margin-right: 20px;
+    height: 540px;
     width: 300px;
-    min-width: 100px;
     border-radius: 15px;
     box-shadow: 10px 5px 8px rgb(39, 38, 38);
 }
