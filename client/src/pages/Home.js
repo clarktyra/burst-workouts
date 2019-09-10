@@ -7,7 +7,6 @@ import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstra
 import { Link } from 'react-router-dom';
 
 
-
 const titleStyle = {
   fontSize: '30px',
   textAlign: 'center'
@@ -48,6 +47,8 @@ class Home extends Component {
   cancelHover = () => { this.setState({ hovered: false }) }
 
 
+
+  
 
 
   render() {
