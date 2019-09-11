@@ -14,7 +14,7 @@ class Workout extends Component {
             isRunning: false,
             isOver: false,
             lastWorkout: '',
-            // todaysDate: moment().format('YYYY-MM-DD'),
+            todaysDate: moment().format('YYYY-MM-DD'),
             selected: false,
             selectedWorkoutData: ''
         }
