@@ -1,5 +1,6 @@
 export const workouts = [
     {
+        id: 0,
         title: 'PUSH UPS',
         image: require('../images/push-up-image.jpg' ),
         alt: 'image of push-up',
@@ -7,6 +8,7 @@ export const workouts = [
         targets: 'Chest, arms, shoulders, core.'
     },
     {
+        id: 1,
         title: 'SIT UPS',
         image: require('../images/sit-up-image.jpg'),
         alt: 'image of sit-up',
@@ -14,6 +16,7 @@ export const workouts = [
         targets: 'Abs, core.'
     },
     {
+        id: 2,
         title: 'SQUATS',
         image: require('../images/squat-image.jpg'),
         alt: 'image of squat',
@@ -21,6 +24,7 @@ export const workouts = [
         targets: 'Quads, hamstrings, glutes, core.'
     },
     {
+        id: 3,
         title: 'JUMPING JACKS',
         image: require('../images/jumping-jack-image.jpg'),
         alt: 'image of jumping jack',
@@ -28,6 +32,7 @@ export const workouts = [
         targets: 'Biceps, triceps, glutes, hamstrings, calves, quads, core, lats.'
     },
     {
+        id: 4,
         title: 'LUNGES',
         image: require('../images/lunge-image.jpg'),
         alt: 'image of lunge',
