@@ -5,12 +5,16 @@ import API from './../utils/API';
 // import { link } from 'react-router-dom';
 import { Collapse, Button, CardBody, Card, CardTitle, CardText } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { tidbits } from '../utils/exercise-tidbits-data';
+
 
 
 const titleStyle = {
   fontSize: '30px',
   textAlign: 'center'
 }
+
+
 
 class Home extends Component {
   constructor(props) {
@@ -37,6 +41,11 @@ class Home extends Component {
         totalDaysInRow: res.data.totalWorkouts
       })
     });
+    let randomizer = Math.floor((Math.random() * tidbits.length));
+    this.setState({
+      title: tidbits[randomizer].title,
+      text: tidbits[randomizer].text
+    })
   }
 
   toggle() {
@@ -95,7 +104,8 @@ class Home extends Component {
           <Button className="homeButtons" color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
           <Collapse isOpen={this.state.collapse}>
             <Card>
-              <CardBody>It is not about how hard you workout today. Its how consistent you have been in a lifetime.</CardBody>
+              <CardTitle style={titleStyle}>{this.state.title}</CardTitle>
+              <CardBody>{this.state.text}</CardBody>
             </Card>
           </Collapse>
           
