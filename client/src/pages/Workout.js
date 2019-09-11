@@ -14,7 +14,7 @@ class Workout extends Component {
             isRunning: false,
             isOver: false,
             lastWorkout: '',
-            todaysDate: moment().format('YYYY-MM-DD'),
+            // todaysDate: moment().format('YYYY-MM-DD'),
             selected: false,
             selectedWorkoutData: ''
         }
@@ -69,60 +69,60 @@ class Workout extends Component {
     render() {
         const { isRunning, isOver, lastWorkout, todaysDate, selectedWorkoutData, selected, title, description, targets, image, alt } = this.state;
         if (lastWorkout === todaysDate) {
-            // This is what renders when the user has already worked out today.
+            // This renders when the user has already worked out today and they select workout.
             return (
                 <div className='alternate-workout-container'>
-                {
-                    selected === true ?
-                    <div className='selected-container'>
-                        <div className='selected'>
-                            <div className='close' onClick={this.handleWorkoutClick}>X</div>
-                            <h3>{selectedWorkoutData.title}</h3>
-                            <img src={selectedWorkoutData.image} alt={selectedWorkoutData.alt}/>
-                            <p style={{marginTop: '15px'}}><strong>Targets: </strong>{selectedWorkoutData.targets}</p>
-                            <p><strong>Description: </strong>{selectedWorkoutData.description}</p>
-                            <div className='selected-timer-container'>
-                                <Timer
-                                    initialTime={2000} 
-                                    direction='backward' 
-                                    startImmediately={false}  
-                                    onStart={this.handleButton} 
-                                    onStop={this.handleButton}
-                                    checkpoints={
-                                        [{
-                                            time: 0,
-                                            callback: this.handleWorkoutClick
-                                        },{
-                                            time: 0,
-                                            callback: this.handleButton
-                                        }]
-                                    }
-                                >
-                                    {({ start, stop }) => (
-                                        <React.Fragment>
-                                            <div
-                                                className='selected-timer'
-                                                style={isRunning === false ? ({ color: 'rgb(82, 82, 82)' }) : ({ color: 'rgb(239, 239, 241)' })}
-                                            >
-                                                <Timer.Minutes />:
-                                                    <Timer.Seconds formatValue={(value) => value < 10 ? `0${value}` : value} />
-                                            </div>
-                                            <div className='botton-container'>
-                                                {
-                                                    isRunning === false ?
-                                                        <button onClick={start} className='button-start'>START YOUR WORKOUT</button> :
-                                                        <button onClick={stop} className='button-stop'>STOP YOUR WORKOUT</button>
-                                                }
-                                            </div>
-                                        </React.Fragment>
-                                    )}
-                                </Timer>
+                    {
+                        selected === true ?
+                        <div className='selected-container'>
+                            <div className='selected'>
+                                <div className='close' onClick={this.handleWorkoutClick}>X</div>
+                                <h3>{selectedWorkoutData.title}</h3>
+                                <img src={selectedWorkoutData.image} alt={selectedWorkoutData.alt}/>
+                                <p style={{marginTop: '15px'}}><strong>Targets: </strong>{selectedWorkoutData.targets}</p>
+                                <p><strong>Description: </strong>{selectedWorkoutData.description}</p>
+                                <div className='selected-timer-container'>
+                                    <Timer
+                                        initialTime={2000} 
+                                        direction='backward' 
+                                        startImmediately={false}  
+                                        onStart={this.handleButton} 
+                                        onStop={this.handleButton}
+                                        checkpoints={
+                                            [{
+                                                time: 0,
+                                                callback: this.handleWorkoutClick
+                                            },{
+                                                time: 0,
+                                                callback: this.handleButton
+                                            }]
+                                        }
+                                    >
+                                        {({ start, stop }) => (
+                                            <React.Fragment>
+                                                <div
+                                                    className='selected-timer'
+                                                    style={isRunning === false ? ({ color: 'rgb(82, 82, 82)' }) : ({ color: 'rgb(239, 239, 241)' })}
+                                                >
+                                                    <Timer.Minutes />:
+                                                        <Timer.Seconds formatValue={(value) => value < 10 ? `0${value}` : value} />
+                                                </div>
+                                                <div className='botton-container'>
+                                                    {
+                                                        isRunning === false ?
+                                                            <button onClick={start} className='button-start'>START YOUR WORKOUT</button> :
+                                                            <button onClick={stop} className='button-stop'>STOP YOUR WORKOUT</button>
+                                                    }
+                                                </div>
+                                            </React.Fragment>
+                                        )}
+                                    </Timer>
+                                </div>
                             </div>
-                        </div>
-                    </div> :
-                    <div></div>
-                    
-                }
+                        </div> :
+                        <div></div>
+                    }
+                    {/* This renders when the user has already worked out. */}
                     <h1>Thanks For Working Out Today!</h1>
                     <h2>You may continue to work out if you'd like but it won't count towards your current streaks. Here is a list of our workouts...</h2>
                     <div className='workouts'>
@@ -140,9 +140,9 @@ class Workout extends Component {
                 </div>
             )
         }
-        // This is what renders when the user has not worked out today.
         return (
             <div className='workout-page-container'>
+            {/* This is what renders when the user has just finished their workout (pop-up). */}
                 {
                     isOver === true ?
                         <div className='workout-pop-up-container'>
@@ -164,6 +164,7 @@ class Workout extends Component {
                         </div> :
                         <div></div>
                 }
+                {/* This is what renders when the usser is ready to workout. */}
                 <div className='workout-page-card'>
                     <h1 className='workout-page-head'>{title}</h1>
                     <img className='workout-image' src={image} alt={alt}/>
