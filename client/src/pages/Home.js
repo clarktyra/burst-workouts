@@ -57,50 +57,74 @@ class Home extends Component {
 
 
 
-  
+
 
 
   render() {
     return (
       <div>
         <div className="container">
-          
-          <h1 id="welcomeTitle">Welcome {this.state.username},</h1>
-          
-          <div className="row">
-            
-            <div className="col-sm">
-              <Card id="first-card" className="card">
-                <CardBody>
-                  <CardTitle style={titleStyle}>{this.state.currentDaysInRow}</CardTitle>
-                  <CardText> You have done a burst workout {this.state.currentDaysInRow} {(this.state.currentDaysInRow) > 1 ? " days " : " day "} in a row</CardText>
-                </CardBody>
-              </Card>
+          <div className="container">
+            <h1 style={titleStyle} id="welcomeTitle"> {this.state.username.toUpperCase()}</h1>
+
+            <div className="row">
+
+              <div className="col-sm">
+                <Card id="middle-card" className="card">
+                  <CardBody>
+                    <CardTitle style={titleStyle}>{this.state.currentDaysInRow}</CardTitle>
+                    <CardText> You have done a burst workout {this.state.currentDaysInRow} {(this.state.currentDaysInRow) == 1 ? " day " : " days "} in a row</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+
+              <div className="col-sm">
+              <div class="row ">
+              <div className="col-sm">
+                <Card id="last-card" className="card">
+                  <CardTitle style={titleStyle}>4</CardTitle>
+                  <CardText>You have complete 4 fire weeks </CardText>
+                 
+                </Card>
+              </div>
+                <div className="col-sm">
+                 <Card id="last-card" className="card">
+                  <CardTitle style={titleStyle}>1</CardTitle>
+                  <CardText>You have complete 1 fire month</CardText>
+            </Card>
+              </div>
             </div>
-            
-            <div className="col-sm">
-              <Card id="middle-card" className="card">
-                <CardBody>
-                  <CardTitle style={titleStyle}>{this.state.highestDaysInRow}</CardTitle>
-                  <CardText> Your longest workout streak is {this.state.highestDaysInRow} {(this.state.highestDaysInRow) > 1 ? " days " : " day "}</CardText>
-                </CardBody>
-              </Card>
+            <br/>
+            <div class="row ">
+              <div className="col-sm">
+                <Card id="first-card" className="card">
+                  <CardBody>
+                    <CardTitle style={titleStyle}>{this.state.highestDaysInRow}</CardTitle>
+                    <CardText> Your longest workout streak is {this.state.highestDaysInRow} {(this.state.highestDaysInRow) == 1 ? " day " : " days "}</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+
+              <div className="col-sm">
+                <Card id="last-card" className="card">
+                  <CardBody>
+                    <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
+                    <CardText> Your total number of burst workouts is {this.state.totalDaysInRow}</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+              </div>
+              </div>
+
             </div>
+            <br/>
             
-            <div className="col-sm">
-              <Card id="last-card" className="card">
-                <CardBody>
-                 <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
-                 <CardText> Your total number of burst workouts is {this.state.totalDaysInRow}</CardText>
-                </CardBody>
-              </Card>
-            </div>
-            
-          </div>       
-          <br/> 
+
+          </div>
+          <br />
           <Link to="/workout"><Button className="homeButtons" color="warning">Click here for today's workout </Button></Link>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <Button className="homeButtons" color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
           <Collapse isOpen={this.state.collapse}>
             <Card>
@@ -108,7 +132,7 @@ class Home extends Component {
               <CardBody>{this.state.text}</CardBody>
             </Card>
           </Collapse>
-          
+
         </div>
       </div>
     )
