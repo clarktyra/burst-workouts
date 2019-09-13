@@ -1,28 +1,35 @@
 #first-card {
-    background: black;
+    color: black;
+    background: #fcf7f8;
     font-family: 'Palatino, serif'
 
 }
 #middle-card {
-    background: #dc3545;
-    font-family: 'Palatino, serif'
+    
+    font-family: 'Palatino, serif';
+    
 
 }
 #last-card {
-    background: black;
+    color: black;
+    background: #fcf7f8;
     font-family: 'Palatino, serif'
     
 
 }
 
 .card {
-    background: black;
-    color:white;
+    color: black;
+    background: #fcf7f8;
     box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
     padding: 2px 16px;
     font-family: 'Palatino, serif'
 
     
+}
+
+.container{
+    background: rgba(0, 0, 0, 0.5);
 }
 
 #welcomeTitle, .homeButtons {

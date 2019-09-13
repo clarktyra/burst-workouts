@@ -10,7 +10,12 @@ import { tidbits } from '../utils/exercise-tidbits-data';
 
 
 const titleStyle = {
-  fontSize: '30px',
+  fontSize: '50px',
+  textAlign: 'center'
+}
+
+const title1Style = {
+  fontSize: '175px',
   textAlign: 'center'
 }
 
@@ -18,6 +23,10 @@ const cardStyle = {
   height: '100%'
 }
 
+const buttonStyle = {
+  display: 'flex',
+  justifyContent: 'center'
+}
 
 
 class Home extends Component {
@@ -69,7 +78,8 @@ class Home extends Component {
       <div>
         <div className="container">
         
-          <div className="container">
+     
+        <br />          
             <h1 style={titleStyle} id="welcomeTitle"> {this.state.username.toUpperCase()}</h1>
             
             <div className="row">
@@ -78,8 +88,8 @@ class Home extends Component {
                 <Card id="middle-card" className="card" style={cardStyle}>
                   <CardBody>
                   <CardSubtitle>Current Streak</CardSubtitle>
-                    <CardTitle style={titleStyle}>{this.state.currentDaysInRow}</CardTitle>
-                    <CardText> You have done a burst workout {this.state.currentDaysInRow} {(this.state.currentDaysInRow) == 1 ? " day " : " days "} in a row</CardText>
+                    <CardTitle style={title1Style}>{this.state.currentDaysInRow}</CardTitle>
+                    {/*<CardText> You have done a burst workout {this.state.currentDaysInRow} {(this.state.currentDaysInRow) == 1 ? " day " : " days "} in a row</CardText> */}
                   </CardBody>
                 </Card>
               </div>
@@ -90,8 +100,10 @@ class Home extends Component {
                 <Card id="first-card" className="card">
                 <CardBody>
                 <CardSubtitle>Fire Weeks</CardSubtitle>
-                  <CardTitle style={titleStyle}>4</CardTitle>
+                  <CardTitle style={titleStyle}>0</CardTitle>
+                  {/* 
                   <CardText>You have complete 4 fire weeks </CardText>
+                  */}
                   </CardBody>
                 </Card>
               </div>
@@ -99,8 +111,10 @@ class Home extends Component {
                  <Card id="last-card" className="card">
                  <CardBody>
                  <CardSubtitle>Fire Months</CardSubtitle>
-                  <CardTitle style={titleStyle}>1</CardTitle>
+                  <CardTitle style={titleStyle}>0</CardTitle>
+                  {/* 
                   <CardText>You have complete 1 fire month</CardText>
+                  */}
                   </CardBody>
             </Card>
               </div>
@@ -112,7 +126,9 @@ class Home extends Component {
                   <CardBody>
                   <CardSubtitle>Longest Streak</CardSubtitle>
                     <CardTitle style={titleStyle}>{this.state.highestDaysInRow}</CardTitle>
+                    {/* 
                     <CardText> Your longest workout streak is {this.state.highestDaysInRow} {(this.state.highestDaysInRow) == 1 ? " day " : " days "}</CardText>
+                    */}
                   </CardBody>
                 </Card>
               </div>
@@ -122,7 +138,9 @@ class Home extends Component {
                   <CardBody>
                   <CardSubtitle>Total bursts</CardSubtitle>
                     <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
+                    {/* 
                     <CardText> Your total number of burst workouts is {this.state.totalDaysInRow}</CardText>
+                    */}
                   </CardBody>
                 </Card>
               </div>
@@ -134,12 +152,17 @@ class Home extends Component {
             <br/>
             <br/>
             <div className="text-center">Fire Week Completion</div>
-            <Progress color="danger" value={15}/>
+            <Progress color="warning" value={15}/>
             <br/>
             <div className="text-center">Fire Month Completion</div>
-            <Progress color="danger" value={15}/>
+            <Progress color="warning" value={15}/>
             <br/>
-            <Button className="homeButtons" color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
+            <div className="text-center">Breaking your highest streak</div>
+            <Progress color="warning" value={15}/>
+            <br/>
+            <div style={buttonStyle}>
+            
+            <Button className="homeButtons" color="warning" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
           <Collapse isOpen={this.state.collapse}>
             <Card>
               <CardTitle style={titleStyle}>{this.state.title}</CardTitle>
@@ -150,8 +173,9 @@ class Home extends Component {
               </CardBody>
             </Card>
           </Collapse>
-
           </div>
+
+          
           
           
 
