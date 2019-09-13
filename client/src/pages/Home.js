@@ -3,7 +3,7 @@ import withAuth from './../components/withAuth';
 import './styles/Home.css'
 import API from './../utils/API';
 // import { link } from 'react-router-dom';
-import { Collapse, Button, CardBody, Card, CardTitle, CardSubtitle, CardText, Progress } from 'reactstrap';
+import { Collapse, Button, CardBody, Card, CardTitle, CardSubtitle, CardText, Progress, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { tidbits } from '../utils/exercise-tidbits-data';
 
@@ -38,7 +38,7 @@ class Home extends Component {
       currentDaysInRow: null,
       highestDaysInRow: null,
       totalDaysInRow: null,
-      collapse: false,
+      modal: false
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -62,7 +62,9 @@ class Home extends Component {
   }
 
   toggle() {
-    this.setState({ collapse: !this.state.collapse });
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   }
 
   setHover = () => { this.setState({ hovered: true }) }
@@ -162,17 +164,19 @@ class Home extends Component {
             <br/>
             <div style={buttonStyle}>
             
-            <Button className="homeButtons" color="warning" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
-          <Collapse isOpen={this.state.collapse}>
-            <Card>
-              <CardTitle style={titleStyle}>{this.state.title}</CardTitle>
-              <CardBody>
-              {this.state.text}
-              <br />
-              <Link to="/workout"><Button className="homeButtons" color="warning">Click here for today's workout </Button></Link>
-              </CardBody>
-            </Card>
-          </Collapse>
+         
+
+          <Button className="homeButtons" color="warning" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
+          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>{this.state.title}</ModalHeader>
+          <ModalBody>
+          {this.state.text}
+          </ModalBody>
+          <ModalFooter>
+          <Link to="/workout"><Button className="homeButtons" color="warning">Click here for today's workout </Button></Link>{' '}
+            <Button className="homeButtons" onClick={this.toggle}>Close</Button>
+          </ModalFooter>
+        </Modal>
           </div>
 
           
