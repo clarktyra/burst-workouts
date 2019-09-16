@@ -28,6 +28,10 @@ const buttonStyle = {
   justifyContent: 'center'
 }
 
+const progessStyle = {
+  backgroundColor: '#FF0000'
+}
+
 
 class Home extends Component {
   constructor(props) {
@@ -38,6 +42,8 @@ class Home extends Component {
       currentDaysInRow: null,
       highestDaysInRow: null,
       totalDaysInRow: null,
+      fireWeeks: null,
+      fireMonths: null,
       modal: false
     };
     this.toggle = this.toggle.bind(this);
@@ -51,7 +57,9 @@ class Home extends Component {
         email: res.data.email,
         currentDaysInRow: res.data.currentStreak,
         highestDaysInRow: res.data.longestStreak,
-        totalDaysInRow: res.data.totalWorkouts
+        totalDaysInRow: res.data.totalWorkouts, 
+        fireWeeks: res.data.fireWeeks,
+        fireMonths: res.data.fireMonths,
       })
     });
     let randomizer = Math.floor((Math.random() * tidbits.length));
@@ -76,6 +84,13 @@ class Home extends Component {
 
 
   render() {
+    var fireWeekPercentage = ( parseInt((this.state.currentDaysInRow / 7)*100));
+    console.log(fireWeekPercentage);
+    var fireMonthPercentage = ( parseInt((this.state.currentDaysInRow / 30)*100));
+    console.log(fireMonthPercentage);
+    var breakStreakPercentage = ( parseInt((this.state.currentDaysInRow / this.state.highestDaysInRow)*100));
+    console.log(breakStreakPercentage)
+
     return (
       <div>
         <div className="container">
@@ -154,13 +169,13 @@ class Home extends Component {
             <br/>
             <br/>
             <div className="text-center">Fire Week Completion</div>
-            <Progress color="warning" value={15}/>
+            <Progress striped color="warning" value={fireWeekPercentage}/>
             <br/>
             <div className="text-center">Fire Month Completion</div>
-            <Progress color="warning" value={15}/>
+            <Progress striped color="danger" value={fireMonthPercentage}/>
             <br/>
             <div className="text-center">Breaking your highest streak</div>
-            <Progress color="warning" value={15}/>
+            <Progress striped style={progessStyle} value={breakStreakPercentage}/>
             <br/>
             <div style={buttonStyle}>
             
