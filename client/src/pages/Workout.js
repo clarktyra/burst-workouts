@@ -92,7 +92,8 @@ class Workout extends Component {
                                             [{
                                                 time: 0,
                                                 callback: this.handleWorkoutClick
-                                            },{
+                                            },
+                                            {
                                                 time: 0,
                                                 callback: this.handleButton
                                             }]

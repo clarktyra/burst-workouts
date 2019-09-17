@@ -41,6 +41,18 @@ const UserSchema = new Schema({
   lastWorkout: {
     type: String,
     required: false
+  },
+  rating: {
+    type: Number,
+    required: false
+  },
+  comment: {
+    type: String,
+    required: false
+  },
+  commentTimestamp: {
+    type: String,
+    required: false
   }
 });
 

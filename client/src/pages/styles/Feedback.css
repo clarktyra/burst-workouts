@@ -1,0 +1,25 @@
+.feedback-container {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.comments-container {
+    display: grid;
+    grid-template-columns: auto;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.comments-container h1 {
+    text-align: center;
+}
+
+.user-feedback {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.rating-contaner {
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}

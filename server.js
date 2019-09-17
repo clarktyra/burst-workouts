@@ -95,6 +95,20 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
   })
 })
 
+// Updates the user's comments and rating
+app.put('/api/user/:id/:rating/:comment', isAuthenticated, (req, res) => {
+  db.User.findById(req.params.id, (err, user) => {
+    if (err) throw err;
+    user.rating = req.params.rating;
+    user.comment = req.params.comment;
+    user.commentTimestamp = moment().format('MM-DD-YYYY h:mm:ss a')
+    user.save((err) => {
+      if (err) throw err;
+      console.log('feedback updated', user.comment);
+    })
+  })
+})
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

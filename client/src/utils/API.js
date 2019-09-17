@@ -16,11 +16,18 @@ export default {
       currentStreak: 0,
       longestStreak: 0,
       totalWorkouts: 0,
-      lastWorkout: ''
+      lastWorkout: '',
+      comment: '',
+      rating: 0,
+      timestamp: ''
     });
   },
   // Updates current streak
   updateCurrentStreak: (id) => {
     return axios.put(`/api/user/${id}`)
+  },
+  // Updates user comments and rating
+  updateFeedback: (id, rating, comment) => {
+    return axios.put(`/api/user/${id}/${rating}/${comment}`)
   }
 };
