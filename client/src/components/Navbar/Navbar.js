@@ -48,7 +48,7 @@ class Navibar extends Component {
 						<Link className="nav-link" to="/leaderboard">Leaderboard</Link>
 					</li>
 					<li>
-						<Link className="nav-link" to="/profile">Feedback</Link>
+						<Link className="nav-link" to="/feedback">Feedback</Link>
 					</li>
 					<li>
 						<Link className="nav-link" to="/profile">Settings</Link>
