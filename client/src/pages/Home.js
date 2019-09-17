@@ -8,6 +8,15 @@ import { Link } from 'react-router-dom';
 import { tidbits } from '../utils/exercise-tidbits-data';
 
 
+const icon1Style = {
+  color: 'orange'
+}
+const icon2Style = {
+  color: 'red'
+}
+const icon3Style = {
+  color: 'green'
+}
 
 const titleStyle = {
   fontSize: '50px',
@@ -16,6 +25,11 @@ const titleStyle = {
 
 const title1Style = {
   fontSize: '175px',
+  textAlign: 'center'
+}
+
+const subTitleStyle = {
+  fontSize: '22px',
   textAlign: 'center'
 }
 
@@ -57,7 +71,7 @@ class Home extends Component {
         email: res.data.email,
         currentDaysInRow: res.data.currentStreak,
         highestDaysInRow: res.data.longestStreak,
-        totalDaysInRow: res.data.totalWorkouts, 
+        totalDaysInRow: res.data.totalWorkouts,
         fireWeeks: res.data.fireWeeks,
         fireMonths: res.data.fireMonths,
       })
@@ -84,119 +98,128 @@ class Home extends Component {
 
 
   render() {
-    var fireWeekPercentage = ( parseInt((this.state.currentDaysInRow / 7)*100));
+    var fireWeekPercentage = (parseInt((this.state.currentDaysInRow / 7) * 100));
     console.log(fireWeekPercentage);
-    var fireMonthPercentage = ( parseInt((this.state.currentDaysInRow / 30)*100));
+    var fireMonthPercentage = (parseInt((this.state.currentDaysInRow / 30) * 100));
     console.log(fireMonthPercentage);
-    var breakStreakPercentage = ( parseInt((this.state.currentDaysInRow / this.state.highestDaysInRow)*100));
+    var breakStreakPercentage = (parseInt((this.state.currentDaysInRow / this.state.highestDaysInRow) * 100));
     console.log(breakStreakPercentage)
 
     return (
       <div>
-        <div className="container">
-        
-     
-        <br />          
-            <h1 style={titleStyle} id="welcomeTitle"> {this.state.username.toUpperCase()}</h1>
-            
-            <div className="row">
+        <div className="container" id="homeContainer">
 
-              <div className="col-sm">
-                <Card id="middle-card" className="card" style={cardStyle}>
-                  <CardBody>
-                  <CardSubtitle>Current Streak</CardSubtitle>
-                    <CardTitle style={title1Style}>{this.state.currentDaysInRow}</CardTitle>
-                    {/*<CardText> You have done a burst workout {this.state.currentDaysInRow} {(this.state.currentDaysInRow) == 1 ? " day " : " days "} in a row</CardText> */}
-                  </CardBody>
-                </Card>
-              </div>
 
-              <div className="col-sm">
-              <div className="row ">
-              <div className="col-sm">
-                <Card id="first-card" className="card">
+          <br />
+          <h1 style={titleStyle} id="welcomeTitle"> {this.state.username.toUpperCase()}</h1>
+
+          <div className="row">
+
+            <div className="col-sm">
+              <Card id="middle-card" className="card" style={cardStyle}>
                 <CardBody>
-                <CardSubtitle>Fire Weeks</CardSubtitle>
-                  <CardTitle style={titleStyle}>0</CardTitle>
-                  {/* 
+                  <CardSubtitle style={subTitleStyle}>Current Streak <i class="fas fa-haykal"></i>
+
+                  </CardSubtitle>
+                  <CardTitle style={title1Style}>{this.state.currentDaysInRow}</CardTitle>
+                  {/*<CardText> You have done a burst workout {this.state.currentDaysInRow} {(this.state.currentDaysInRow) == 1 ? " day " : " days "} in a row</CardText> */}
+                </CardBody>
+              </Card>
+            </div>
+
+            <div className="col-sm">
+              <div className="row ">
+                <div className="col-sm">
+                  <Card id="first-card" className="card">
+                    <CardBody>
+                    <CardSubtitle style={subTitleStyle}>Fire Weeks <i class="fas fa-fire" style={icon1Style}></i>
+                    </CardSubtitle>
+                      <CardTitle style={titleStyle}>0</CardTitle>
+                      {/* 
                   <CardText>You have complete 4 fire weeks </CardText>
                   */}
-                  </CardBody>
-                </Card>
-              </div>
+                    </CardBody>
+                  </Card>
+                </div>
                 <div className="col-sm">
-                 <Card id="last-card" className="card">
-                 <CardBody>
-                 <CardSubtitle>Fire Months</CardSubtitle>
-                  <CardTitle style={titleStyle}>0</CardTitle>
-                  {/* 
+                  <Card id="last-card" className="card">
+                    <CardBody>
+                      <CardSubtitle style={subTitleStyle}>Fire Months <i class="fas fa-fire-alt" style={icon2Style}></i>
+
+                      </CardSubtitle>
+                      <CardTitle style={titleStyle}>0</CardTitle>
+                      {/* 
                   <CardText>You have complete 1 fire month</CardText>
                   */}
-                  </CardBody>
-            </Card>
+                    </CardBody>
+                  </Card>
+                </div>
               </div>
-            </div>
-            <br/>
-            <div className="row ">
-              <div className="col-sm">
-                <Card id="first-card" className="card">
-                  <CardBody>
-                  <CardSubtitle>Longest Streak</CardSubtitle>
-                    <CardTitle style={titleStyle}>{this.state.highestDaysInRow}</CardTitle>
-                    {/* 
-                    <CardText> Your longest workout streak is {this.state.highestDaysInRow} {(this.state.highestDaysInRow) == 1 ? " day " : " days "}</CardText>
-                    */}
-                  </CardBody>
-                </Card>
-              </div>
+              <br />
+              <div className="row ">
+                
 
-              <div className="col-sm">
-                <Card id="last-card" className="card">
-                  <CardBody>
-                  <CardSubtitle>Total bursts</CardSubtitle>
-                    <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
-                    {/* 
+                <div className="col-sm">
+                  <Card id="last-card" className="card">
+                    <CardBody>
+                      <CardSubtitle style={subTitleStyle} >Total bursts <i class="far fa-sun" ></i>
+                      </CardSubtitle>
+                      <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
+                      {/* 
                     <CardText> Your total number of burst workouts is {this.state.totalDaysInRow}</CardText>
                     */}
-                  </CardBody>
-                </Card>
-              </div>
-              
-              </div>
-              </div>
+                    </CardBody>
+                  </Card>
+                </div>
+                <div className="col-sm">
+                  <Card id="first-card" className="card">
+                    <CardBody>
+                      <CardSubtitle style={subTitleStyle}>Longest Streak <i class="fas fa-mountain" style={icon3Style}></i>
 
+                      </CardSubtitle>
+                      <CardTitle style={titleStyle}>{this.state.highestDaysInRow}</CardTitle>
+                      {/* 
+                    <CardText> Your longest workout streak is {this.state.highestDaysInRow} {(this.state.highestDaysInRow) == 1 ? " day " : " days "}</CardText>
+                    */}
+                    </CardBody>
+                  </Card>
+                </div>
+
+              </div>
             </div>
-            <br/>
-            <br/>
-            <div className="text-center">Fire Week Completion</div>
-            <Progress striped color="warning" value={fireWeekPercentage}/>
-            <br/>
-            <div className="text-center">Fire Month Completion</div>
-            <Progress striped color="danger" value={fireMonthPercentage}/>
-            <br/>
-            <div className="text-center">Breaking your highest streak</div>
-            <Progress striped style={progessStyle} value={breakStreakPercentage}/>
-            <br/>
-            <div style={buttonStyle}>
-            
-         
 
-          <Button className="homeButtons" color="warning" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
-          <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>{this.state.title}</ModalHeader>
-          <ModalBody>
-          {this.state.text}
-          </ModalBody>
-          <ModalFooter>
-          <Link to="/workout"><Button className="homeButtons" color="warning">Click here for today's workout </Button></Link>{' '}
-            <Button className="homeButtons" onClick={this.toggle}>Close</Button>
-          </ModalFooter>
-        </Modal>
+          </div>
+          <br />
+          <br />
+          <div className="text-center"><i class="fas fa-fire" style={icon1Style}></i></div>
+          <Progress  color="dark" value={fireWeekPercentage}><span style={icon1Style}>{fireWeekPercentage}%</span></Progress>
+          <br />
+          <div className="text-center"><i class="fas fa-fire-alt" style={icon2Style}></i></div>
+          <Progress  color="dark" value={fireMonthPercentage}><span style={icon2Style}>{fireMonthPercentage}%</span></Progress>
+          <br />
+          <div className="text-center"><i class="fas fa-mountain" style={icon3Style}></i></div>
+          <Progress  color="dark" value={breakStreakPercentage}><span style={icon3Style}>{breakStreakPercentage}%</span></Progress>
+          <br />
+          <div style={buttonStyle}>
+
+
+
+            <Button className="homeButtons" color="warning" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Exercise tidbit of the day!</Button>
+            <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+              <ModalHeader toggle={this.toggle}>{this.state.title}</ModalHeader>
+              <ModalBody>
+                {this.state.text}
+              </ModalBody>
+              <ModalFooter>
+                <Link to="/workout"><Button className="homeButtons" color="warning">Click here for today's workout </Button></Link>{' '}
+                <Button className="homeButtons" onClick={this.toggle}>Close</Button>
+              </ModalFooter>
+            </Modal>
           </div>
 
-          
-          
-          
+
+
+
 
         </div>
       </div>
