@@ -353,32 +353,9 @@ button:focus {
 }
 
 .workout:hover {
-    box-shadow: 15px 10px 15px rgb(38, 38, 38);
-    height: 546px;
-    width: 306px;
-    margin-left: 17px;
-    margin-right: 17px;
-    margin-bottom: -6px;
-}
-
-.workout:hover h3 {
-    font-size: 41px;
-}
-
-.workout:hover img {
-    height: 154px;
-    width: 233px;
-}
-
-.workout:hover p {
-    margin-left: 33px;
-    margin-right: 33px;
-    font-size: 14.225px;
-}
-
-.targets:hover {
-    margin-top: 17px;
-}
+    transform: scale(1.05);
+    box-shadow: 20px 10px 15px rgb(38, 38, 38);
+    }
 
 /* Selected alternate workout page */
 
