@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const morgan = require('morgan'); // used to see requests
 const db = require('./models');
+const moment = require('moment');
 const PORT = process.env.PORT || 3001;
 
 const isAuthenticated = require("./config/isAuthenticated");
@@ -26,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', {useNewUrlParser: true, useCreateIndex: true})
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
 
@@ -49,14 +50,64 @@ app.post('/api/signup', (req, res) => {
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
-  db.User.findById(req.params.id).then(data => {
-    if(data) {
-      res.json(data);
-    } else {
-      res.status(404).send({success: false, message: 'No user found'});
-    }
-  }).catch(err => res.status(400).send(err));
+  db.User.findById(req.params.id)
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).send({ success: false, message: 'No user found' });
+      }
+    }).catch(err => res.status(400).send(err));
 });
+
+app.get('/api/user', isAuthenticated, (req, res) => {
+  db.User.find()
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).send({ success: false, message: 'No users found' });
+      }
+    }).catch(err => res.status(400).send(err));
+});
+
+// Updates the user's current workout streak
+app.put('/api/user/:id', isAuthenticated, (req, res) => {
+  db.User.findById(req.params.id, (err, user) => {
+    if (err) throw err;
+    let todaysDate = moment().format('YYYY-MM-DD');
+    const incrementer = (count) => {
+      return count + 1;
+    }
+    user.currentStreak = incrementer(user.currentStreak);
+    user.totalWorkouts = incrementer(user.totalWorkouts);
+    if (user.lastWorkout !== moment(todaysDate).subtract(1, 'day').format('YYYY-MM-DD')) {
+      user.currentStreak = 1;
+    } 
+    if (user.currentStreak > user.longestStreak) {
+      user.longestStreak = user.currentStreak;
+    }
+    user.lastWorkout = todaysDate;  
+    user.save((err) => {
+      if (err) throw err;
+      console.log('current streak and last workout updated');
+    })
+  })
+})
+
+// Updates the user's comments and rating
+app.put('/api/user/:id/:rating/:comment', isAuthenticated, (req, res) => {
+  db.User.findById(req.params.id, (err, user) => {
+    if (err) throw err;
+    user.rating = req.params.rating;
+    user.comment = req.params.comment;
+    user.commentTimestamp = moment().format('MM-DD-YYYY h:mm:ss a')
+    user.save((err) => {
+      if (err) throw err;
+      console.log('feedback updated', user.comment);
+    })
+  })
+})
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -79,10 +130,10 @@ app.use(function (err, req, res, next) {
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });

@@ -25,6 +25,34 @@ const UserSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  currentStreak: {
+    type: Number,
+    required: true
+  },
+  longestStreak: {
+    type: Number,
+    required: true
+  },
+  totalWorkouts: {
+    type: Number,
+    required: true
+  },
+  lastWorkout: {
+    type: String,
+    required: false
+  },
+  rating: {
+    type: Number,
+    required: false
+  },
+  comment: {
+    type: String,
+    required: false
+  },
+  commentTimestamp: {
+    type: String,
+    required: false
   }
 });
 
