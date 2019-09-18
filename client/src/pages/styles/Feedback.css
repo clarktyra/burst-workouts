@@ -4,13 +4,13 @@
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
-.comments-container {
+.reviews-container {
     display: grid;
     grid-template-columns: auto;
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
-.comments-container h1 {
+.reviews-container h1 {
     text-align: center;
 }
 
