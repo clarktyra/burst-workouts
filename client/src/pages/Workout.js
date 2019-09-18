@@ -132,7 +132,7 @@ class Workout extends Component {
                                 <div className='workout' key={workout.id} onClick={() => this.handleWorkoutClick(workout.id)}>
                                     <h3>{workout.title}</h3>
                                     <img src={workout.image} alt={workout.alt}/>
-                                    <p style={{marginTop: '15px'}}><strong>Targets: </strong>{workout.targets}</p>
+                                    <p className='targets'><strong>Targets: </strong>{workout.targets}</p>
                                     <p><strong>Description: </strong>{workout.description}</p>
                                 </div>
                             )
