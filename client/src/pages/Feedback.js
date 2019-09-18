@@ -9,8 +9,8 @@ class Feedback extends Component {
         super(props);
         this.state = {
             rating: 0,
-            comment: '',
-            users: []
+            review: '',
+            feedback: []
         }
 
         this.onStarClick = this.onStarClick.bind(this);
@@ -25,22 +25,13 @@ class Feedback extends Component {
                     username: res.data.username
                 })
             });
-        API.getUsers(this.props.users)
+        API.getFeedback(this.props.feedback)
             .then(res => {
-                let users = res.data;
+                let feedback = res.data.reverse();
                 this.setState({
-                    users: users
+                    feedback: feedback
                 })
             });
-        // let ratings = [];
-        // let { users } = this.state;
-        //     users.map(user => {
-        //         if (user.comment !== '') {
-        //             return ratings.push(user.rating)
-        //         }
-                
-        //     })
-        //     return console.log('ratings: ', ratings)
     }
 
     onStarClick(nextVal, prevVal, name) {
@@ -51,39 +42,46 @@ class Feedback extends Component {
 
     handleChange(e) {
         this.setState({
-            comment: e.target.value
+            review: e.target.value
         })
     }
 
     handleButton() {
-        if (this.state.comment === '') {
-            alert('Please enter a comment before sending your feedback.')
+        if (this.state.review === '') {
+            alert('Please enter a review before sending your feedback.')
         }
-        API.updateFeedback(this.props.user.id, this.state.rating, this.state.comment)
+        API.updateFeedback(this.state.username, this.state.rating, this.state.review);
+        API.getFeedback(this.props.feedback)
+            .then(res => {
+                let feedback = res.data;
+                this.setState({
+                    feedback: feedback.reverse(),
+                    rating: 0,
+                    review: ''
+                })
+            });
     }
 
     render() {
-        const { users, username, rating } = this.state;
+        const { feedback, username, review, rating } = this.state;
         return (
             <div className='feedback-container'>
-                <div className='comments-container'>
-                    <h1>Comments</h1>
+                <div className='reviews-container'>
+                    <h1>Reviews</h1>
                     <p>Average rating: {}</p>
                     {
-                        users.reverse().map(user => {
+                        feedback.map(fb => {
                             return (
-                                user.comment === '' ?
-                                <div key={user._id}></div> :
-                                <div className='user-feedback' key={user._id}>
-                                    <p>{user.username}</p>
+                                <div className='user-feedback' key={fb._id}>
+                                    <p>{fb.username}</p>
                                     <StarRatingComponent
                                         className='user-rating'
                                         name='rate'
                                         starCount={5.0}
-                                        value={user.rating}
+                                        value={fb.rating}
                                     />
-                                    <p>{user.comment}</p>
-                                    <p>{user.commentTimestamp}</p>
+                                    <p>{fb.review}</p>
+                                    <p>{fb.reviewTimestamp}</p>
                                 </div>
                             )
                         })
@@ -99,7 +97,7 @@ class Feedback extends Component {
                         onStarClick={this.onStarClick}
                         // onStarHover={}
                     />
-                    <input onChange={this.handleChange}/>
+                    <input value={review} onChange={this.handleChange}/>
                     <button className='rating-button' onClick={this.handleButton}>Send</button>
                 </div>
             </div>
