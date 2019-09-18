@@ -11,6 +11,8 @@
     display: grid;
     grid-template-columns: auto;
     grid-gap: 10px;
+    overflow: auto;
+    height: 90vh;
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
 }
 
@@ -22,6 +24,7 @@
     margin-left: 10px;
     overflow: hidden;
     word-wrap: break-word;
+    height: 200px;
     border: 1px solid rgba(0, 0, 0, 0.8);
 }
 
@@ -52,6 +55,7 @@
 
 .rating-container {
     border: 1px solid rgba(0, 0, 0, 0.8);
+    
 }
 
 ::-webkit-input-placeholder {
