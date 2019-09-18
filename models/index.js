@@ -1,4 +1,3 @@
 module.exports = {
-  User: require('./User'),
-  Feedback: require('./Feedback')
+  User: require('./User')
 };

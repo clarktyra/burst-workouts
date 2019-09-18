@@ -9,9 +9,8 @@ class Feedback extends Component {
         super(props);
         this.state = {
             rating: 0,
-            review: '',
-            feedback: [],
-            avRating: 0
+            comment: '',
+            users: []
         }
 
         this.onStarClick = this.onStarClick.bind(this);
@@ -26,23 +25,22 @@ class Feedback extends Component {
                     username: res.data.username
                 })
             });
-        API.getFeedback(this.props.feedback)
+        API.getUsers(this.props.users)
             .then(res => {
-                let feedback = res.data.reverse();
-                let ratings = [];
-                let sum = 0;
-                feedback.map(fb => {
-                    return ratings.push(fb.rating)
-                });
-                ratings.map(rate => {
-                    return (sum += rate);
-                })
-                let avRating = (sum / ratings.length).toFixed(1);
+                let users = res.data;
                 this.setState({
-                    feedback: feedback,
-                    avRating: avRating
+                    users: users
                 })
             });
+        // let ratings = [];
+        // let { users } = this.state;
+        //     users.map(user => {
+        //         if (user.comment !== '') {
+        //             return ratings.push(user.rating)
+        //         }
+                
+        //     })
+        //     return console.log('ratings: ', ratings)
     }
 
     onStarClick(nextVal, prevVal, name) {
@@ -53,60 +51,46 @@ class Feedback extends Component {
 
     handleChange(e) {
         this.setState({
-            review: e.target.value
+            comment: e.target.value
         })
     }
 
     handleButton() {
-        if (this.state.review === '') {
-            alert('Please enter a review before sending your feedback.')
+        if (this.state.comment === '') {
+            alert('Please enter a comment before sending your feedback.')
         }
-        if (this.state.rating === 0) {
-            alert('Please enter a rating before sending your feedback.')
-        }
-        API.updateFeedback(this.state.username, this.state.rating, this.state.review);
-        API.getFeedback(this.props.feedback)
-            .then(res => {
-                let feedback = res.data.reverse();
-                this.setState({
-                    feedback: feedback,
-                    rating: 0,
-                    review: ''
-                })
-            });
+        API.updateFeedback(this.props.user.id, this.state.rating, this.state.comment)
     }
 
     render() {
-        const { feedback, username, review, rating, avRating } = this.state;
+        const { users, username, rating } = this.state;
         return (
             <div className='feedback-container'>
-                <div className='reviews-container'>
-                    <h1>Reviews</h1>
-                    <p>Average rating: {avRating}/5</p>
+                <div className='comments-container'>
+                    <h1>Comments</h1>
+                    <p>Average rating: {}</p>
                     {
-                        feedback.map(fb => {
+                        users.reverse().map(user => {
                             return (
-                                <div className='user-feedback' key={fb._id}>
-                                    <div className='wrapper'>
-                                        <p className='username'>{fb.username}</p>
-                                        <StarRatingComponent
-                                            className='user-rating'
-                                            name='rate'
-                                            starCount={5.0}
-                                            value={fb.rating}
-                                        />
-                                    </div>
-                                    <p className='user-review'>{fb.review}</p>
-                                    <p className='user-review-timestamp'>{fb.reviewTimestamp}</p>
+                                user.comment === '' ?
+                                <div key={user._id}></div> :
+                                <div className='user-feedback' key={user._id}>
+                                    <p>{user.username}</p>
+                                    <StarRatingComponent
+                                        className='user-rating'
+                                        name='rate'
+                                        starCount={5.0}
+                                        value={user.rating}
+                                    />
+                                    <p>{user.comment}</p>
+                                    <p>{user.commentTimestamp}</p>
                                 </div>
                             )
                         })
                     }
                 </div>
                 <div className='rating-container'>
-                    <h1>Rate Us</h1>
-                    <h2>Hello {username}.</h2>
-                    <p>Give us an awesome rating!</p>
+                    <h1>Hello {username}. Rate us!</h1>
                     <StarRatingComponent
                         className='rating-component'
                         name='rate'
@@ -115,13 +99,7 @@ class Feedback extends Component {
                         onStarClick={this.onStarClick}
                         // onStarHover={}
                     />
-                    <input 
-                        className='review-input'
-                        value={review}
-                        onChange={this.handleChange}
-                        maxLength='500'
-                        placeholder='Enter review here (limit 500 characters)'
-                    />
+                    <input onChange={this.handleChange}/>
                     <button className='rating-button' onClick={this.handleButton}>Send</button>
                 </div>
             </div>
