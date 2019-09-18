@@ -12,18 +12,20 @@ class Leaderboard extends Component {
       currentStreak: 0,
       longestStreak: 0,
       totalWorkouts: 0,
-      users: []
+      users: [],
+      reverse: false
     }
 
+    this.compareBy = this.compareBy.bind(this);
+    this.toggleReverse = this.toggleReverse.bind(this);
+    this.sortBy = this.sortBy.bind(this);
   }
 
   componentDidMount() {
     API.getUsers(this.props.users)
       .then(res => {
         let callUsers = res.data;
-        this.setState({
-          users: callUsers
-        })
+        this.setState({ users: callUsers })
       })
     API.getUser(this.props.user.id)
       .then(res1 => {
@@ -37,28 +39,71 @@ class Leaderboard extends Component {
       .catch(err => err);
   }
 
+  compareBy(key, ca) {
+
+    if (ca === 'asc') {
+      return function (a, b) {
+        if (a[key] < b[key]) return -1;
+        if (a[key] > b[key]) return 1;
+        return 0;
+      }
+    }
+    if (ca === 'desc') {
+      return function (a, b) {
+        // console.log('desc case', a)
+        if (a[key] < b[key]) return 1;
+        if (a[key] > b[key]) return -1;
+        return 0;
+      }
+    }
+  }
+
+  sortBy(key, ca) {
+    // console.log('the key is', key)
+    // console.log('the case is', ca)
+    let arrayCopy = [...this.state.users];
+    arrayCopy.sort(this.compareBy(key, ca));
+    this.toggleReverse()
+    this.setState({ users: arrayCopy });
+  }
+
+  toggleReverse() {
+    this.setState({ reverse: !this.state.reverse });
+  }
+
+
   render() {
-    const { users, username, currentStreak, longestStreak, totalWorkouts } = this.state;
+
+    const { users, username, currentStreak, longestStreak, totalWorkouts, reverse } = this.state;
+
+    const rows = users.map(rowUser =>
+      <tr key={rowUser._id}>
+        <td>{rowUser.username}</td>
+        <td>{rowUser.currentStreak}</td>
+        <td>{rowUser.longestStreak}</td>
+        <td>{rowUser.totalWorkouts}</td>
+      </tr>
+    );
+
     return (
       <div className="leaderboard-container">
         <table>
           <tbody>
             <tr>
-              <th>User</th>
-              <th>Current Streak</th>
-              <th>Longest Streak</th>
-              <th>Total Workout</th>
+              {!reverse ? <th onClick={() => this.sortBy('username', 'asc')} >User Name</th>
+                :
+                <th onClick={() => this.sortBy('username', 'desc')} >User Name</th>}
+              {!reverse ? <th onClick={() => this.sortBy('currentStreak', 'asc')}>Current Streak</th>
+                :
+                <th onClick={() => this.sortBy('currentStreak', 'desc')}>Current Streak</th>}
+              {!reverse ? <th onClick={() => this.sortBy('longestStreak', 'asc')}>Longest Streak</th>
+                :
+                <th onClick={() => this.sortBy('longestStreak', 'desc')}>Longest Streak</th>}
+              {!reverse ? <th onClick={() => this.sortBy('totalWorkouts', 'asc')}>Total Workouts</th>
+                :
+                <th onClick={() => this.sortBy('totalWorkouts', 'desc')}>Total Workouts</th>}
             </tr>
-            {
-              users.map(user => (
-                <tr key={user._id}>
-                  <td>{user.username}</td>
-                  <td>{user.currentStreak > 1 || user.currentStreak === 0 ? `${user.currentStreak} days` : `${user.currentStreak} day`}</td>
-                  <td>{user.longestStreak > 1 || user.longestStreak === 0 ? `${user.longestStreak} days` : `${user.longestStreak} day`}</td>
-                  <td>{user.totalWorkouts > 1 || user.totalWorkouts === 0 ? `${user.totalWorkouts} days` : `${user.totalWorkouts} day`}</td>
-                </tr>
-              ))
-            }
+            {rows}
           </tbody>
         </table>
         <div className="user-container">
