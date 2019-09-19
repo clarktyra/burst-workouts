@@ -58,7 +58,7 @@
     
 }
 
-::-webkit-input-placeholder {
+.review-input::-webkit-input-placeholder {
     color: rgba(3, 3, 3, 0.5);
     font-size: 13px;
     font-style: italic;
