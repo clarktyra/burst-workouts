@@ -50,7 +50,6 @@ class Leaderboard extends Component {
     }
     if (ca === 'desc') {
       return function (a, b) {
-        // console.log('desc case', a)
         if (a[key] < b[key]) return 1;
         if (a[key] > b[key]) return -1;
         return 0;
@@ -59,8 +58,6 @@ class Leaderboard extends Component {
   }
 
   sortBy(key, ca) {
-    // console.log('the key is', key)
-    // console.log('the case is', ca)
     let arrayCopy = [...this.state.users];
     arrayCopy.sort(this.compareBy(key, ca));
     this.toggleReverse()
