@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from './../components/withAuth';
 import API from './../utils/API';
+import './styles/Profile.css';
 import { Link } from 'react-router-dom';
 
 class Profile extends Component {
@@ -21,11 +22,17 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container Profile">
-        <h1>On the profile page!</h1>
-        <p>Username: {this.state.username}</p>
-        <p>Email: {this.state.email}</p>
-        <Link to="/">Go home</Link>
+      <div className="container-profile">
+        <div className="settings-container">
+          <div className="settings-header">
+            <h5>Personal Settings</h5>
+          </div>
+        </div>
+        <div className="title">
+          <h2>Public Profile</h2>
+          {/* <p>Username: {this.state.username}</p>
+          <p>Email: {this.state.email}</p> */}
+        </div>
       </div>
     )
   }
