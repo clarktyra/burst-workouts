@@ -95,19 +95,24 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
   })
 })
 
-// Updates the user's comments and rating
-app.put('/api/user/:id/:rating/:comment', isAuthenticated, (req, res) => {
-  db.User.findById(req.params.id, (err, user) => {
-    if (err) throw err;
-    user.rating = req.params.rating;
-    user.comment = req.params.comment;
-    user.commentTimestamp = moment().format('MM-DD-YYYY h:mm:ss a')
-    user.save((err) => {
-      if (err) throw err;
-      console.log('feedback updated', user.comment);
-    })
-  })
+// Updates the user's review and rating
+app.post('/api/feedback', isAuthenticated, (req, res) => {
+  db.Feedback.create(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
 })
+
+// Gets all the feedback from the database
+app.get('/api/feedback', isAuthenticated, (req, res) => {
+  db.Feedback.find()
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).send({ success: false, message: 'No users found' });
+      }
+    }).catch(err => res.status(400).send(err));
+});
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
