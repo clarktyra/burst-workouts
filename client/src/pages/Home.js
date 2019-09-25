@@ -191,14 +191,14 @@ class Home extends Component {
           </div>
           <br />
           <br />
-          <div className="text-center"><i class="fas fa-fire" style={icon1Style}></i></div>
-          <Progress  color="dark" value={fireWeekPercentage}><span style={icon1Style}>{fireWeekPercentage}%</span></Progress>
+          <div className="text-center" ><i class="fas fa-fire" style={icon1Style}></i></div>
+          <Progress  color="warning" value={fireWeekPercentage}>{fireWeekPercentage}%</Progress>
           <br />
           <div className="text-center"><i class="fas fa-fire-alt" style={icon2Style}></i></div>
-          <Progress  color="dark" value={fireMonthPercentage}><span style={icon2Style}>{fireMonthPercentage}%</span></Progress>
+          <Progress  color="danger" value={fireMonthPercentage}>{fireMonthPercentage}%</Progress>
           <br />
           <div className="text-center"><i class="fas fa-mountain" style={icon3Style}></i></div>
-          <Progress  color="dark" value={breakStreakPercentage}><span style={icon3Style}>{breakStreakPercentage}%</span></Progress>
+          <Progress  color="success" value={breakStreakPercentage}>{breakStreakPercentage}%</Progress>
           <br />
           <div style={buttonStyle}>
 
