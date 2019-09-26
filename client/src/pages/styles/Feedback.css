@@ -1,0 +1,66 @@
+.feedback-container {
+    display: grid;
+    grid-template-columns: 1fr 33%;
+    grid-gap: 10px;
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+}
+
+/* This is for the reviews section */
+
+.reviews-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 10px;
+    overflow: auto;
+    height: 90vh;
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+}
+
+.reviews-container h1 {
+    text-align: center;
+}
+
+.user-feedback {
+    margin-left: 10px;
+    overflow: hidden;
+    word-wrap: break-word;
+    height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.wrapper {
+    overflow: hidden;
+
+}
+
+.username {
+    float: left;
+}
+
+.user-rating {
+    float: right;
+}
+
+.user-review {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 15px;
+}
+
+.user-review-timestamp {
+    float: right;
+}
+
+/* This is for the rating section */
+
+.rating-container {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    
+}
+
+::-webkit-input-placeholder {
+    color: rgba(3, 3, 3, 0.5);
+    font-size: 13px;
+    font-style: italic;
+    line-height: 20px;
+}

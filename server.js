@@ -103,6 +103,25 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
   })
 })
 
+// Updates the user's review and rating
+app.post('/api/feedback', isAuthenticated, (req, res) => {
+  db.Feedback.create(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+})
+
+// Gets all the feedback from the database
+app.get('/api/feedback', isAuthenticated, (req, res) => {
+  db.Feedback.find()
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).send({ success: false, message: 'No users found' });
+      }
+    }).catch(err => res.status(400).send(err));
+});
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

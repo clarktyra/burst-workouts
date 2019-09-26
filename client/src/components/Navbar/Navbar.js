@@ -48,7 +48,7 @@ class Navibar extends Component {
 						<Link className="nav-link" to="/leaderboard">Leaderboard</Link>
 					</li>
 					<li>
-						<Link className="nav-link" to="/profile">Feedback</Link>
+						<Link className="nav-link" to="/feedback">Feedback</Link>
 					</li>
 					<li>
 						<Link className="nav-link" to="/profile">Settings</Link>
@@ -75,18 +75,19 @@ class Navibar extends Component {
 
 	render() {
 		return (
-
-			<nav className="navbar navbar-expand-lg navbar-dark">
-				<div className="container">
-					<Link className="navbar-brand" to="/home"><img src={require('../../images/burstworkouts.png')} alt='burst workouts logo' /></Link>
-					<Navbar color="faded" light>
-						<NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-						<Collapse isOpen={!this.state.collapsed} navbar>
-							{this.showNavigation()}
-						</Collapse>
-					</Navbar>
-				</div>
-			</nav>
+			<header>
+				<nav className="navbar navbar-expand-lg navbar-dark">
+					<div className="container">
+						<Link className="navbar-brand" to="/home"><img src={require('../../images/burstworkouts.png')} alt='burst workouts logo' /></Link>
+						<Navbar color="faded" light>
+							<NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+							<Collapse isOpen={!this.state.collapsed} navbar>
+								{this.showNavigation()}
+							</Collapse>
+						</Navbar>
+					</div>
+				</nav>
+			</header>
 		)
 	}
 }

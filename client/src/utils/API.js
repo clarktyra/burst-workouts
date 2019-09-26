@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 export default {
   // Gets a single user by id
   getUser: (id) => {
@@ -24,5 +25,18 @@ export default {
   // Updates current streak
   updateCurrentStreak: (id) => {
     return axios.put(`/api/user/${id}`)
+  },
+  // Updates user review and rating
+  updateFeedback: (username, rating, review) => {
+    return axios.post(`/api/feedback`, {
+      username: username,
+      rating: rating,
+      review: review,
+      reviewTimestamp: moment().format('MM-DD-YYYY h:mm:ss a')
+    })
+  },
+  // Gets feedback from the database
+  getFeedback: () => {
+    return axios.get('/api/feedback');
   }
 };
