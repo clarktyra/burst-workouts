@@ -81,13 +81,21 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
     }
     user.currentStreak = incrementer(user.currentStreak);
     user.totalWorkouts = incrementer(user.totalWorkouts);
+    //Comment these out for testing
     if (user.lastWorkout !== moment(todaysDate).subtract(1, 'day').format('YYYY-MM-DD')) {
       user.currentStreak = 1;
     } 
+    //Comment these out for testing
     if (user.currentStreak > user.longestStreak) {
       user.longestStreak = user.currentStreak;
     }
     user.lastWorkout = todaysDate;  
+    if (parseInt(user.currentStreak % 7) === 0){
+      user.fireWeeks = incrementer(user.fireWeeks)
+    }
+    if ( (user.currentStreak % 30) === 0){
+      user.fireMonths = incrementer(user.fireMonths)
+    }
     user.save((err) => {
       if (err) throw err;
       console.log('current streak and last workout updated');

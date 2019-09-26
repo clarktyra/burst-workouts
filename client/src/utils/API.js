@@ -13,10 +13,12 @@ export default {
       username: username,
       email: email,
       password: password,
-      currentStreak: 0,
+      currentStreak: 29,
       longestStreak: 0,
       totalWorkouts: 0,
-      lastWorkout: ''
+      lastWorkout: '',
+      fireWeeks: 0,
+      fireMonths: 0
     });
   },
   // Updates current streak

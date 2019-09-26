@@ -100,6 +100,7 @@ class Home extends Component {
   render() {
     var fireWeekPercentage = (parseInt((this.state.currentDaysInRow / 7) * 100));
     console.log(fireWeekPercentage);
+    
     var fireMonthPercentage = (parseInt((this.state.currentDaysInRow / 30) * 100));
     console.log(fireMonthPercentage);
     var breakStreakPercentage = (parseInt((this.state.currentDaysInRow / this.state.highestDaysInRow) * 100));
@@ -134,7 +135,7 @@ class Home extends Component {
                     <CardBody>
                     <CardSubtitle style={subTitleStyle}>Fire Weeks <i class="fas fa-fire" style={icon1Style}></i>
                     </CardSubtitle>
-                      <CardTitle style={titleStyle}>0</CardTitle>
+                      <CardTitle style={titleStyle}>{this.state.fireWeeks}</CardTitle>
                       {/* 
                   <CardText>You have complete 4 fire weeks </CardText>
                   */}
@@ -147,7 +148,7 @@ class Home extends Component {
                       <CardSubtitle style={subTitleStyle}>Fire Months <i class="fas fa-fire-alt" style={icon2Style}></i>
 
                       </CardSubtitle>
-                      <CardTitle style={titleStyle}>0</CardTitle>
+                      <CardTitle style={titleStyle}>{this.state.fireMonths}</CardTitle>
                       {/* 
                   <CardText>You have complete 1 fire month</CardText>
                   */}
