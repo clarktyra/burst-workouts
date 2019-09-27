@@ -122,6 +122,21 @@ app.get('/api/feedback', isAuthenticated, (req, res) => {
     }).catch(err => res.status(400).send(err));
 });
 
+// delete user on settings page
+app.delete('/api/user/:id', isAuthenticated, (req, res) => {
+  db.User.findByIdAndRemove(req.params.id, (err, user) => {
+    // As always, handle any potential errors:
+    if (err) return res.status(500).send(err);
+    // We'll create a simple object to send back with a message and the id of the document that was removed
+    // You can really do this however you want, though.
+    const response = {
+        message: "Todo successfully deleted",
+        id: user._id
+    };
+    return res.status(200).send(response);
+});
+})
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
