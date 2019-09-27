@@ -5,6 +5,7 @@ export default {
   getUser: (id) => {
     return axios.get(`/api/user/${id}`);
   },
+  // Gets all users for leaderboard table
   getUsers: () => {
     return axios.get(`/api/user`);
   },
@@ -36,5 +37,9 @@ export default {
   // Gets feedback from the database
   getFeedback: () => {
     return axios.get('/api/feedback');
+  },
+  // Deletes user on settings page
+  deleteUser: (id) => {
+    return axios.delete(`/api/user/${id}`);
   }
 };
