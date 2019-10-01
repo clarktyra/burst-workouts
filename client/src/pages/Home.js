@@ -98,16 +98,23 @@ class Home extends Component {
 
 
   render() {
-    var fireWeekPercentage = (parseInt((this.state.currentDaysInRow / 7) * 100));
+    var fireWeekPercentage = (parseInt(((this.state.currentDaysInRow % 7) / 7) * 100));
     console.log(fireWeekPercentage);
     
-    var fireMonthPercentage = (parseInt((this.state.currentDaysInRow / 30) * 100));
+    var fireMonthPercentage = (parseInt(((this.state.currentDaysInRow % 30) / 30) * 100));
     console.log(fireMonthPercentage);
-    var breakStreakPercentage = (parseInt((this.state.currentDaysInRow / this.state.highestDaysInRow) * 100));
+    var breakStreakPercentage;
+    if (this.state.currentDaysInRow <= this.state.highestDaysInRow ){
+      breakStreakPercentage = (parseInt((this.state.currentDaysInRow / (this.state.highestDaysInRow + 0.00000000000001)) * 100));
+    } else {
+      breakStreakPercentage = 100
+    }
+   
     console.log(breakStreakPercentage)
 
     return (
       <div>
+      <br />
         <div className="container" id="homeContainer">
 
 
@@ -119,7 +126,7 @@ class Home extends Component {
             <div className="col-sm">
               <Card id="middle-card" className="card" style={cardStyle}>
                 <CardBody>
-                  <CardSubtitle style={subTitleStyle}>Current Streak <i class="fas fa-haykal"></i>
+                  <CardSubtitle style={subTitleStyle}>Current Streak 
 
                   </CardSubtitle>
                   <CardTitle style={title1Style}>{this.state.currentDaysInRow}</CardTitle>
@@ -163,7 +170,7 @@ class Home extends Component {
                 <div className="col-sm">
                   <Card id="last-card" className="card">
                     <CardBody>
-                      <CardSubtitle style={subTitleStyle} >Total bursts <i class="far fa-sun" ></i>
+                      <CardSubtitle style={subTitleStyle} >Total Bursts 
                       </CardSubtitle>
                       <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
                       {/* 
@@ -223,6 +230,7 @@ class Home extends Component {
 
 
         </div>
+        <br/>
       </div>
     )
   }
