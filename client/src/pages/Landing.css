@@ -1,6 +1,27 @@
-/* body {
-    background-image: url('../images/apartment.jpg');
-} */
+.feature-box:before {
+  content: "";
+  width: 1px;
+  height: 170px;
+  display: block;
+  background: rgba(132, 140, 152, 0.125);
+  opacity: 0.2;
+  position: absolute;
+  top: 30px;
+  left: 50px;
+}
+
+#total{
+  background-image: linear-gradient(to right,rgba(255, 165, 0, 0.8),rgba(255, 0, 0, 0.8)),url("../images/apartment.jpg");
+  
+  background-position: center;
+  background-size: cover; /* Resize the background image to cover the entire container */
+  
+  background-blend-mode:darken;
+  color:white;
+  mix-blend-mode: multiply;
+  text-shadow: 2px 2px black
+
+}
 
 #one-card {
     background-color: white;
@@ -17,10 +38,15 @@ background-color: white
     text-align: center;
     color: #000000;
     margin: 2rem auto;
+    max-height: 600px;
 
 
   }
   
+  p {
+    font-size: 20px;
+    text-shadow: 2px 2px black
+  }
   /* Top left text */
   .top-left {
     position: absolute;
@@ -32,18 +58,14 @@ background-color: white
   
   /* Top right text */
   .top-right {
-    position: absolute;
+   
     top: 8px;
     right: 16px;
 
   }
+
+  
   
   
   /* Centered text */
-  .centered {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-  }
+  

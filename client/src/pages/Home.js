@@ -113,8 +113,10 @@ class Home extends Component {
     console.log(breakStreakPercentage)
 
     return (
-      <div>
+      <div className="everything">
       <br />
+
+
         <div className="container" id="homeContainer">
 
 
