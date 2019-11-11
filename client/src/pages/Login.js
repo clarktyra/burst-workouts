@@ -47,9 +47,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="thing">
+      <div className="thingLogin">
       <div className="row">
-        <div className="container col-md-6">
+        <div className="container col-md-6" id="loginContainer">
           <div className="headers">
             <h1>WELCOME BACK </h1>
             <h3>LOGIN AND CONTINUE YOUR STREAK</h3>
@@ -77,10 +77,11 @@ class Login extends Component {
           </form>
         </div>
       </div>
-      <br></br>
+     
+      <br></br><br></br>
+
         <div className="row">
           <div className="container col-md-6 ">
-            <img style={imgStyle} src={workoutImg} alt="workout" />
           </div>
         </div>
         </div>
