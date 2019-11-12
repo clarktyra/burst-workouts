@@ -41,6 +41,14 @@ const UserSchema = new Schema({
   lastWorkout: {
     type: String,
     required: false
+  }, 
+  fireWeeks: {
+    type: Number,
+    required: false
+  },
+  fireMonths: {
+    type: Number,
+    required: false
   }
 });
 

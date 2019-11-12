@@ -46,9 +46,9 @@ class Signup extends Component {
   render() {
 
     return (
-      <div className="wrapper">
+      <div className="thingSignUp">
         <div className="row">
-          <div className="container col-md-6 signup-container">
+          <div className="container col-md-6" id="signUpContainer">
             <div className="headers">
               <h1>JOIN THE MOVEMENT </h1>
               <h3>SIGN UP NOW FOR FREE</h3>
@@ -90,7 +90,6 @@ class Signup extends Component {
         <br></br>
         <div className="row">
           <div className="container col-md-6 ">
-            <img style={imgStyle} src={jumpropeImg} alt="woman jumping rope" />
           </div>
         </div>
         <br></br>
