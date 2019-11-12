@@ -92,25 +92,35 @@ function Leaderboard(props) {
 
   return (
     <div className="leaderboard-container">
-      <table>
-        <tbody>
-          <tr>
-            {!reverse ? <th onClick={() => sortBy('username', 'asc')} >User Name</th>
-              :
-              <th onClick={() => sortBy('username', 'desc')} >User Name</th>}
-            {!reverse ? <th onClick={() => sortBy('currentStreak', 'asc')}>Current Streak</th>
-              :
-              <th onClick={() => sortBy('currentStreak', 'desc')}>Current Streak</th>}
-            {!reverse ? <th onClick={() => sortBy('longestStreak', 'asc')}>Longest Streak</th>
-              :
-              <th onClick={() => sortBy('longestStreak', 'desc')}>Longest Streak</th>}
-            {!reverse ? <th onClick={() => sortBy('totalWorkouts', 'asc')}>Total Workouts</th>
-              :
-              <th onClick={() => sortBy('totalWorkouts', 'desc')}>Total Workouts</th>}
-          </tr>
-          {rows}
-        </tbody>
-      </table>
+      <div className="table-container">
+        <table>
+          <tbody>
+            <tr>
+              {!reverse ?
+                <th onClick={() => sortBy('username', 'asc')} >User Name</th>
+                :
+                <th onClick={() => sortBy('username', 'desc')} >User Name</th>
+              }
+              {!reverse ?
+                <th onClick={() => sortBy('currentStreak', 'asc')}>Current Streak</th>
+                :
+                <th onClick={() => sortBy('currentStreak', 'desc')}>Current Streak</th>
+              }
+              {!reverse ?
+                <th onClick={() => sortBy('longestStreak', 'asc')}>Longest Streak</th>
+                :
+                <th onClick={() => sortBy('longestStreak', 'desc')}>Longest Streak</th>
+              }
+              {!reverse ?
+                <th onClick={() => sortBy('totalWorkouts', 'asc')}>Total Workouts</th>
+                :
+                <th onClick={() => sortBy('totalWorkouts', 'desc')}>Total Workouts</th>
+              }
+            </tr>
+            {rows}
+          </tbody>
+        </table>
+      </div>
       <div className="user-container">
         <img src={require('../images/squat-image.jpg')} alt='profile' />
         <div>Welcome: {username}</div>
