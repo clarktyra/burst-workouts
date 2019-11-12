@@ -42,7 +42,7 @@ class Landing extends Component {
                         <div className="row d-flex align-items-center justify-content-center text-center">
                             <div className="col-md-10 centered2">
                                 <div className="title-content-warpper">
-                                    <h1>The best way to consistently work out</h1>
+                                    <h1 id="landingHeader">The best way to consistently work out</h1>
                                 </div>
                             </div>
                         </div>
@@ -56,8 +56,8 @@ class Landing extends Component {
                                     <div className="feature-box">
                                         <div className="mb-2">
                                             <div className="icon display-3 mb-3"><i className="fas fa-fire-alt"></i></div>
-                                            <h3>What to expect</h3>
-                                            <p>Burst Workouts gives you access to a unique short workout to complete every day</p>
+                                            <h3 className="landingH3">What to expect</h3>
+                                            <p className="landingP">Burst Workouts gives you access to a unique short workout to complete every day</p>
 
                                         </div>
                                     </div>
@@ -77,8 +77,8 @@ class Landing extends Component {
                                     <div className="feature-box">
                                         <div className="mb-2">
                                             <div className="icon display-3 mb-3"><i class="fas fa-user-friends"></i></div>
-                                            <h3>Online Comunity</h3>
-                                            <p>Challenge your friends and our online comunity for the longest streaks</p>
+                                            <h3 className="landingH3">Online Comunity</h3>
+                                            <p className="landingP">Challenge your friends and our online comunity for the longest streaks</p>
 
                                         </div>
                                     </div>
@@ -132,6 +132,10 @@ class Landing extends Component {
                 <br />
                 <br />
                 <br />
+                <br />
+                <br />
+                <br />
+
             </div>
             /*
                             <div className="container">

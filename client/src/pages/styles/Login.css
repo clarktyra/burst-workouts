@@ -1,5 +1,13 @@
-.headers {
-    text-align: center
+.headers h1{
+    text-align: center;
+    font-family: block-header;
+    font-size: 75px;
+}
+
+.headers h3{
+    text-align: center;
+    font-family: block-header;
+    font-size: 35px;
 }
 
 

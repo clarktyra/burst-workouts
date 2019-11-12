@@ -1,27 +1,41 @@
 #first-card {
-    color: black;
-    background: #fcf7f8;
-    font-family: 'Palatino, serif'
+    color: white;
+    text-shadow: 2px 2px black;
+
+    /* background: #fcf7f8; */
+    font-family: 'Palatino, serif';
+    background: rgba(0, 0, 0, 0);
+    border: none;
+
 
 }
 #middle-card {
-    
+    color: white;
+    text-shadow: 2px 2px black;
+
     font-family: 'Palatino, serif';
+    background: rgba(0, 0, 0, 0);
+    border: none;
+
     
 
 }
 #last-card {
-    color: black;
+    color: white;
+    text-shadow: 2px 2px black;
+
     background: #fcf7f8;
-    font-family: 'Palatino, serif'
-    
+    font-family: 'Palatino, serif';
+    background: rgba(0, 0, 0, 0);
+    border: none;
+
 
 }
 
 .card {
-    color: black;
+    /* color: black; */
     background: #fcf7f8;
-    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+    /* box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2); */
     padding: 2px 16px;
     font-family: 'Palatino, serif'
 
@@ -31,11 +45,26 @@
 
 
 #homeContainer{
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    /* text-shadow: 2px 2px black; */
+
 }
 
-#welcomeTitle, .homeButtons {
-    font-family: 'Palatino, serif'
+#welcomeTitle {
+    color:white;
+    font-family: block-header;
+    font-size: 70px;
+}
+.homeButtons {
+    color:white;
+    font-family: block-header;
+    font-size: 50px;
 }
 
+.progress {
+    height: 2rem;
+    font-size: 1.5rem;
+
+}
 

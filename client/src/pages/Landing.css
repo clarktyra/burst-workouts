@@ -19,7 +19,9 @@
   background-blend-mode:darken;
   color:white;
   mix-blend-mode: multiply;
-  text-shadow: 2px 2px black
+  text-shadow: 2px 2px black;
+  
+
 
 }
 
@@ -43,9 +45,10 @@ background-color: white
 
   }
   
-  p {
+  .landingP {
     font-size: 20px;
     text-shadow: 2px 2px black
+    
   }
   /* Top left text */
   .top-left {
@@ -64,7 +67,16 @@ background-color: white
 
   }
 
-  
+  #landingHeader{
+    color:white;
+    font-family: block-header;
+    font-size: 70px;
+  }
+
+  .landingH3 {
+        font-family: block-header;
+        font-size: 35px;
+  }
   
   
   /* Centered text */

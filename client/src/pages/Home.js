@@ -29,7 +29,9 @@ const title1Style = {
 }
 
 const subTitleStyle = {
-  fontSize: '22px',
+  fontFamily: "block-header",
+
+  fontSize: '30px',
   textAlign: 'center'
 }
 
@@ -100,21 +102,21 @@ class Home extends Component {
   render() {
     var fireWeekPercentage = (parseInt(((this.state.currentDaysInRow % 7) / 7) * 100));
     console.log(fireWeekPercentage);
-    
+
     var fireMonthPercentage = (parseInt(((this.state.currentDaysInRow % 30) / 30) * 100));
     console.log(fireMonthPercentage);
     var breakStreakPercentage;
-    if (this.state.currentDaysInRow <= this.state.highestDaysInRow ){
+    if (this.state.currentDaysInRow <= this.state.highestDaysInRow) {
       breakStreakPercentage = (parseInt((this.state.currentDaysInRow / (this.state.highestDaysInRow + 0.00000000000001)) * 100));
     } else {
       breakStreakPercentage = 100
     }
-   
+
     console.log(breakStreakPercentage)
 
     return (
       <div className="everything">
-      <br />
+        <br />
 
 
         <div className="container" id="homeContainer">
@@ -124,11 +126,12 @@ class Home extends Component {
           <h1 style={titleStyle} id="welcomeTitle"> {this.state.username.toUpperCase()}</h1>
 
           <div className="row">
+            
 
             <div className="col-sm">
               <Card id="middle-card" className="card" style={cardStyle}>
                 <CardBody>
-                  <CardSubtitle style={subTitleStyle}>Current Streak 
+                  <CardSubtitle style={subTitleStyle}>Current Streak
 
                   </CardSubtitle>
                   <CardTitle style={title1Style}>{this.state.currentDaysInRow}</CardTitle>
@@ -142,8 +145,8 @@ class Home extends Component {
                 <div className="col-sm">
                   <Card id="first-card" className="card">
                     <CardBody>
-                    <CardSubtitle style={subTitleStyle}>Fire Weeks <i class="fas fa-fire" style={icon1Style}></i>
-                    </CardSubtitle>
+                      <CardSubtitle style={subTitleStyle}>Fire Weeks <i class="fas fa-fire" style={icon1Style}></i>
+                      </CardSubtitle>
                       <CardTitle style={titleStyle}>{this.state.fireWeeks}</CardTitle>
                       {/* 
                   <CardText>You have complete 4 fire weeks </CardText>
@@ -167,12 +170,12 @@ class Home extends Component {
               </div>
               <br />
               <div className="row ">
-                
+
 
                 <div className="col-sm">
                   <Card id="last-card" className="card">
                     <CardBody>
-                      <CardSubtitle style={subTitleStyle} >Total Bursts 
+                      <CardSubtitle style={subTitleStyle} >Total Bursts
                       </CardSubtitle>
                       <CardTitle style={titleStyle}>{this.state.totalDaysInRow}</CardTitle>
                       {/* 
@@ -202,13 +205,13 @@ class Home extends Component {
           <br />
           <br />
           <div className="text-center" ><i class="fas fa-fire" style={icon1Style}></i></div>
-          <Progress  color="warning" value={fireWeekPercentage}>{fireWeekPercentage}%</Progress>
+          <Progress color="warning" value={fireWeekPercentage}>{fireWeekPercentage}%</Progress>
           <br />
           <div className="text-center"><i class="fas fa-fire-alt" style={icon2Style}></i></div>
-          <Progress  color="danger" value={fireMonthPercentage}>{fireMonthPercentage}%</Progress>
+          <Progress color="danger" value={fireMonthPercentage}>{fireMonthPercentage}%</Progress>
           <br />
           <div className="text-center"><i class="fas fa-mountain" style={icon3Style}></i></div>
-          <Progress  color="success" value={breakStreakPercentage}>{breakStreakPercentage}%</Progress>
+          <Progress color="success" value={breakStreakPercentage}>{breakStreakPercentage}%</Progress>
           <br />
           <div style={buttonStyle}>
 
@@ -232,7 +235,7 @@ class Home extends Component {
 
 
         </div>
-        <br/>
+        <br />
       </div>
     )
   }
