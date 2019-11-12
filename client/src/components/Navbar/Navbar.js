@@ -51,7 +51,7 @@ class Navibar extends Component {
 						<Link className="nav-link" to="/feedback">Feedback</Link>
 					</li>
 					<li>
-						<Link className="nav-link" to="/profile">Settings</Link>
+						<Link className="nav-link" to="/settings">Settings</Link>
 					</li>
 					<li className="nav-item">
 						{/* this is not using the Link component to logout or user and then refresh the application to the start */}
