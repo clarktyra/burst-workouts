@@ -71,3 +71,49 @@ form button {
 .settings h5 {
   cursor: pointer;
 }
+
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 18px;
+  margin: 10px;
+}
+
+.delete-container div {
+  padding: .3rem;
+}
+
+.delete-container button {
+  padding: .3rem;
+  margin: 15px;
+  border-radius: .3rem;
+}
+
+
+@media screen and (max-width: 914px) {
+  .container-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .settings-container{
+    margin: 2rem 0;
+    width: 70vw;
+    height: 21vh;
+  }
+  .title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 65vw;
+  }
+  .settings:last-child{
+    border-bottom: none;
+  }
+}
