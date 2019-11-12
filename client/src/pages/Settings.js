@@ -45,9 +45,11 @@ const Stats = ({currentStreak, longestStreak, totalWorkouts}) => (
   <>
     <h2>Profile Stats</h2>
     <div className="form-container">
-      <div>Current Streak: {currentStreak > 1 || currentStreak === 0 ? `${currentStreak} days` : `${currentStreak} day`}</div>
-      <div>Longest Streak: {longestStreak > 1 || longestStreak === 0 ? `${longestStreak} days` : `${longestStreak} day`}</div>
-      <div>Total Workouts: {totalWorkouts > 1 || totalWorkouts === 0 ? `${totalWorkouts} days` : `${totalWorkouts} day`}</div>
+      <div className="stats-container">
+        <div>Current Streak: {currentStreak > 1 || currentStreak === 0 ? `${currentStreak} days` : `${currentStreak} day`}</div>
+        <div>Longest Streak: {longestStreak > 1 || longestStreak === 0 ? `${longestStreak} days` : `${longestStreak} day`}</div>
+        <div>Total Workouts: {totalWorkouts > 1 || totalWorkouts === 0 ? `${totalWorkouts} days` : `${totalWorkouts} day`}</div>
+      </div>
     </div>
   </>
 );
@@ -56,9 +58,12 @@ const DeleteProfile = ({ id, deleteAccount }) => (
   <>
     <h2>Delete Profile</h2>
     <div className="form-container">
-      <div>Would you like to Delete your profile</div>
-      <div>You will be missing out on competition with your friends</div>
-      <Link to="/"><button onClick={deleteAccount}>Delete Account</button></Link>
+      <div className="delete-container">
+        <div>Would you like to Delete your profile</div>
+        <div>You will be missing out on competition with your friends</div>
+        <div><strong>There is no turning back at this point!</strong></div>
+        <Link to="/"><button onClick={deleteAccount}>Delete Account</button></Link>
+      </div>
     </div>
   </>
 )

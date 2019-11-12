@@ -5,18 +5,24 @@
   height: 90vh;
 }
 
-table {
+.table-container {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   min-width: 25rem;;
   grid-column: 1/3;
   grid-row: 1;
-  margin: 2rem 2rem 2rem 8rem;
+  margin: 4rem 2rem 2rem 8rem;
   border-collapse: collapse;
   border-radius: .5rem;
-  overflow: hidden;
+  overflow: auto;
+  max-height: 30rem;
+}
+
+table {
   color: #BBBBC2;
+  width: 100%;
+  min-width: 25rem;;
 }
 
 td, th {
@@ -41,7 +47,7 @@ tr:nth-child(even) {
 
 
 .user-container {
-  margin: 2rem 10rem 2rem -2rem;
+  margin: 4rem 10rem 4rem -2rem;
   background-color: rgba(0, 0, 0, 0.393);
   color: #ffffff;
   border-radius: .5rem;
@@ -81,17 +87,39 @@ tr:nth-child(even) {
   .leaderboard-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 4.5rem;
+    padding: 1rem;
+    margin: 4rem 2rem;
     height: 100vh;
   }
 
-  table {
-    margin: 6rem 1rem 3rem;
+  .table-container {
+    margin: 1rem 3rem;
+    max-height: 25rem;
+    overflow: auto;
   }
 
   .user-container {
-    margin: 1rem;
+    margin: 0 auto;
+  }
+}
+@media  screen and (max-width: 375px) {
+  .leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    height: 100vh;
+  }
+
+  .table-container {
+    margin: 1rem 3rem;
+    max-height: 25rem;
+    overflow: auto;
+  }
+
+  .user-container {
+    margin: 0 auto;
+    padding: 1rem;
   }
 }
