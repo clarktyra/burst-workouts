@@ -121,9 +121,10 @@ class Home extends Component {
 
         <div className="container" id="homeContainer">
 
-
+          <div className="mytopSection">
           <br />
           <h1 style={titleStyle} id="welcomeTitle"> {this.state.username.toUpperCase()}</h1>
+
 
           <div className="row">
             
@@ -202,8 +203,11 @@ class Home extends Component {
             </div>
 
           </div>
+          </div>
           <br />
           <br />
+          <div className="progressSection">
+          
           <div className="text-center" ><i class="fas fa-fire" style={icon1Style}></i></div>
           <Progress color="warning" value={fireWeekPercentage}>{fireWeekPercentage}%</Progress>
           <br />
@@ -213,6 +217,7 @@ class Home extends Component {
           <div className="text-center"><i class="fas fa-mountain" style={icon3Style}></i></div>
           <Progress color="success" value={breakStreakPercentage}>{breakStreakPercentage}%</Progress>
           <br />
+          </div>
           <div style={buttonStyle}>
 
 

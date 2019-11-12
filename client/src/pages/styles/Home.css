@@ -45,8 +45,8 @@
 
 
 #homeContainer{
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 30px;
+     background: rgba(0, 0, 0, 0.3); 
+    border-radius: 30px; 
     /* text-shadow: 2px 2px black; */
 
 }
@@ -68,3 +68,13 @@
 
 }
 
+.mytopSection{
+    /* background: rgba(0, 0, 0, .4); */
+    border-radius: 30px;
+}
+
+.progressSection{
+    /* background: rgba(0, 0, 0, .4); */
+    border-radius: 30px;
+    padding: 5px 
+}
