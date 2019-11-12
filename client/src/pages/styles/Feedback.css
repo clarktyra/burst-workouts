@@ -1,8 +1,75 @@
+@font-face {
+    src: url('../../fonts/kc-fonts_headliner/workout-header.ttf');
+    font-family: block-header;
+}
+
 .feedback-container {
     display: grid;
-    grid-template-columns: 1fr 33%;
+    grid-template-columns: 33% 1fr;
     grid-gap: 10px;
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+}
+
+
+/* This is for the rating section */
+
+.rating-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rating-container h1 {
+    font-family: block-header;
+    font-size: 75px;
+    text-align: center;
+}
+
+.rating-container h2 {
+    text-align: center;
+    margin-top: 60px;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.rating-container p {
+    font-weight: 100;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rating-component {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 50px;
+}
+
+.review-input {
+    font-weight: 200;
+    font-size: 15px;
+    height: 200px;
+    width: 350px;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.review-input::-webkit-input-placeholder {
+    color: rgba(3, 3, 3, 0.5);
+    font-size: 13px;
+    font-style: italic;
+    line-height: 20px;
+}
+
+.rating-button {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    width: 350px;
+    border-radius: 5px;
+    background: black;
+    color: white;
 }
 
 /* This is for the reviews section */
@@ -13,31 +80,42 @@
     grid-gap: 10px;
     overflow: auto;
     height: 90vh;
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
 }
 
+.reviews-container::-webkit-scrollbar {
+    display: none;
+    }
+
 .reviews-container h1 {
+    font-family: block-header;
     text-align: center;
+    font-size: 75px;
+    margin-top: 15px;
 }
 
 .user-feedback {
-    margin-left: 10px;
+    margin-right: 15px;
     overflow: hidden;
     word-wrap: break-word;
-    height: 200px;
+    height: 230px;
     border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
 }
 
 .wrapper {
     overflow: hidden;
-
 }
 
 .username {
+    margin-left: 15px;
+    font-size: 30px;
     float: left;
+    font-weight: 100;
 }
 
 .user-rating {
+    margin-right: 15px;
+    font-size: 20px;
     float: right;
 }
 
@@ -45,22 +123,11 @@
     margin-left: 15px;
     margin-right: 15px;
     font-size: 15px;
+    font-weight: 100;
 }
 
 .user-review-timestamp {
+    margin-right: 15px;
     float: right;
-}
-
-/* This is for the rating section */
-
-.rating-container {
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    
-}
-
-::-webkit-input-placeholder {
     color: rgba(3, 3, 3, 0.5);
-    font-size: 13px;
-    font-style: italic;
-    line-height: 20px;
 }

@@ -80,9 +80,29 @@ class Feedback extends Component {
         const { feedback, username, review, rating, avRating } = this.state;
         return (
             <div className='feedback-container'>
+                <div className='rating-container'>
+                    <h1>Rate Us</h1>
+                    <h2>Hello {username}</h2>
+                    <StarRatingComponent
+                        className='rating-component'
+                        name='rate'
+                        starCount={5}
+                        value={rating}
+                        onStarClick={this.onStarClick}
+                        />
+                    <p>Please give us an awesome rating!</p>
+                    <textarea
+                        className='review-input'
+                        value={review}
+                        onChange={this.handleChange}
+                        maxLength='500'
+                        placeholder='Enter review here (limit 500 characters)'
+                    />
+                    <button className='rating-button' onClick={this.handleButton}>Submit</button>
+                </div>
                 <div className='reviews-container'>
                     <h1>Reviews</h1>
-                    <p>Average rating: {avRating}/5</p>
+                    <p style={{marginRight: '20px', fontWeight: '100', textAlign: 'right'}}>Average rating: {avRating}/5</p>
                     {
                         feedback.map(fb => {
                             return (
@@ -102,27 +122,6 @@ class Feedback extends Component {
                             )
                         })
                     }
-                </div>
-                <div className='rating-container'>
-                    <h1>Rate Us</h1>
-                    <h2>Hello {username}.</h2>
-                    <p>Give us an awesome rating!</p>
-                    <StarRatingComponent
-                        className='rating-component'
-                        name='rate'
-                        starCount={5}
-                        value={rating}
-                        onStarClick={this.onStarClick}
-                        // onStarHover={}
-                    />
-                    <input 
-                        className='review-input'
-                        value={review}
-                        onChange={this.handleChange}
-                        maxLength='500'
-                        placeholder='Enter review here (limit 500 characters)'
-                    />
-                    <button className='rating-button' onClick={this.handleButton}>Send</button>
                 </div>
             </div>
         )
