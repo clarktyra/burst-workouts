@@ -64,6 +64,7 @@ class Feedback extends Component {
         if (this.state.rating === 0) {
             alert('Please enter a rating before sending your feedback.')
         }
+        else {
         API.updateFeedback(this.state.username, this.state.rating, this.state.review);
         API.getFeedback(this.props.feedback)
             .then(res => {
@@ -74,6 +75,7 @@ class Feedback extends Component {
                     review: ''
                 })
             });
+        }
     }
 
     render() {
@@ -102,7 +104,7 @@ class Feedback extends Component {
                 </div>
                 <div className='reviews-container'>
                     <h1>Reviews</h1>
-                    <p style={{marginRight: '20px', fontWeight: '100', textAlign: 'right'}}>Average rating: {avRating}/5</p>
+                    <p style={{marginRight: '70px', fontSize: '20px', fontWeight: '300', textAlign: 'right'}}>Average rating: {avRating}/5</p>
                     {
                         feedback.map(fb => {
                             return (
