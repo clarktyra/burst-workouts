@@ -93,9 +93,22 @@
     margin-top: 15px;
 }
 
+.rating-average {
+    margin-right: 70px;
+    font-size: 25px;
+    font-weight: 300; 
+    text-align: right;
+}
+
+@media only screen and (max-width: 900px) {
+    .rating-average {
+        /* margin-right: 70px; */
+    }
+}
+
 .user-feedback {
-    margin-bottom: 10px;
-    margin-right: 50px;
+    margin-bottom: 15px;
+    margin-right: 40px;
     overflow: scroll;
     word-wrap: break-word;
     height: 175px;
@@ -103,7 +116,7 @@
     border-radius: 5px;
 }
 
-.wrapper {
+.feedback-wrapper {
     overflow: hidden;
 }
 
@@ -131,37 +144,35 @@
 
 .user-review-timestamp {
     margin-right: 15px;
+    padding-top: 20px;
     float: right;
     color: rgba(3, 3, 3, 0.5);
 }
 
 /* ----------Media queries---------- */
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
     .feedback-container {
-        display: block;
-        /* grid-template-columns: 1fr; */
-        
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
     .rating-button {
-        /* margin-bottom: 50px; */
+        margin-bottom: 50px;
+    }
+
+    .rating-average {
+        margin-right: 200px;
     }
 
     .reviews-container {
-    width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    display: grid;
-    grid-template-columns: auto;
-    grid-gap: 10px;
-    overflow: auto;
-    height: 90vh;
+        margin-bottom: 15px;
+        overflow: inherit;
     }
 
     .user-feedback {
         width: 700px;
         margin-left: auto;
-    margin-right: auto;
+        margin-right: auto;
     }
 }

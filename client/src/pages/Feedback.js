@@ -104,12 +104,12 @@ class Feedback extends Component {
                 </div>
                 <div className='reviews-container'>
                     <h1>Reviews</h1>
-                    <p style={{marginRight: '70px', fontSize: '20px', fontWeight: '300', textAlign: 'right'}}>Average rating: {avRating}/5</p>
+                    <p className='rating-average'>Average rating: {avRating}/5</p>
                     {
                         feedback.map(fb => {
                             return (
                                 <div className='user-feedback' key={fb._id}>
-                                    <div className='wrapper'>
+                                    <div className='feedback-wrapper'>
                                         <p className='username'>{fb.username}</p>
                                         <StarRatingComponent
                                             className='user-rating'
