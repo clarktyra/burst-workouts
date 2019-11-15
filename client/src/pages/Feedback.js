@@ -100,7 +100,7 @@ class Feedback extends Component {
                         maxLength='500'
                         placeholder='Enter review here (limit 500 characters)'
                     />
-                    <button className='rating-button' onClick={this.handleButton}>Submit</button>
+                    <button className='rating-button' onClick={this.handleButton}>SUBMIT</button>
                 </div>
                 <div className='reviews-container'>
                     <h1>Reviews</h1>

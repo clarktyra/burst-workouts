@@ -65,11 +65,13 @@
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    height: 50px;
+    height: 60px;
     width: 350px;
     border-radius: 5px;
+    border-color: black;
     background: black;
     color: white;
+    font-size: 20px;
 }
 
 /* ----------This is for the reviews section---------- */
@@ -100,11 +102,11 @@
     text-align: right;
 }
 
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
     .rating-average {
-        /* margin-right: 70px; */
+        padding-right: 210px;
     }
-}
+} */
 
 .user-feedback {
     margin-bottom: 15px;
@@ -172,6 +174,64 @@
 
     .user-feedback {
         width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .user-feedback {
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .user-feedback {
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .review-input {
+        height: 180px;
+        width: 300px;
+    }
+
+    .rating-button {
+        height: 50px;
+        width: 300px;
+    }
+
+    .rating-average {
+        margin-right: 40px;
+    }
+
+    .user-feedback {
+        width: 300px;
+        height: 175px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .review-input {
+        height: 150px;
+        width: 270px;
+    }
+
+    .rating-button {
+        height: 50px;
+        width: 270px;
+    }
+
+    .user-feedback {
+        width: 280px;
+        height: 175px;
         margin-left: auto;
         margin-right: auto;
     }
