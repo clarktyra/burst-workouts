@@ -212,27 +212,35 @@
 
     .user-feedback {
         width: 300px;
-        height: 175px;
+        height: 155px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .user-review-timestamp {
+        padding-top: 0px;
     }
 }
 
 @media only screen and (max-width: 320px) {
     .review-input {
         height: 150px;
-        width: 270px;
+        width: 250px;
     }
 
     .rating-button {
         height: 50px;
-        width: 270px;
+        width: 250px;
     }
 
     .user-feedback {
         width: 280px;
-        height: 175px;
+        height: 155px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .user-review-timestamp {
+        padding-top: 0px;
     }
 }
