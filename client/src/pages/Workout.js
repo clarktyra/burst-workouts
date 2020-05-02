@@ -36,7 +36,7 @@ class Workout extends Component {
         this.setState({
             title: workouts[randomizer].title,
             image: workouts[randomizer].image,
-            description: workouts[randomizer].description,
+            // description: workouts[randomizer].description,
             targets: workouts[randomizer].targets,
             alt: workouts[randomizer].alt
         })
@@ -68,6 +68,9 @@ class Workout extends Component {
 
     render() {
         const { isRunning, isOver, lastWorkout, todaysDate, selectedWorkoutData, selected, title, description, targets, image, alt } = this.state;
+        const ExerciseNumber =0;
+        const totalExercised = 5;
+        {/* 
         if (lastWorkout === todaysDate) {
             // This renders when the user has already worked out today and they select workout.
             return (
@@ -80,7 +83,7 @@ class Workout extends Component {
                                 <h3>{selectedWorkoutData.title}</h3>
                                 <img src={selectedWorkoutData.image} alt={selectedWorkoutData.alt}/>
                                 <p style={{marginTop: '15px'}}><strong>Targets: </strong>{selectedWorkoutData.targets}</p>
-                                <p><strong>Description: </strong>{selectedWorkoutData.description}</p>
+                                  <p><strong>Description: </strong>{selectedWorkoutData.description}</p> 
                                 <div className='selected-timer-container'>
                                     <Timer
                                         initialTime={2000} 
@@ -123,7 +126,6 @@ class Workout extends Component {
                         </div> :
                         <div></div>
                     }
-                    {/* This renders when the user has already worked out. */}
                     <h1>Thanks For Working Out Today!</h1>
                     <h2>You may continue to work out if you'd like but it won't count towards your current streaks. Here is a list of our workouts...</h2>
                     <div className='workouts'>
@@ -133,7 +135,7 @@ class Workout extends Component {
                                     <h3>{workout.title}</h3>
                                     <img src={workout.image} alt={workout.alt}/>
                                     <p className='targets'><strong>Targets: </strong>{workout.targets}</p>
-                                    <p><strong>Description: </strong>{workout.description}</p>
+                                    <p><strong>Description: </strong>{workout.description}</p> 
                                 </div>
                             )
                         }
@@ -141,9 +143,10 @@ class Workout extends Component {
                 </div>
             )
         }
+        */}
         return (
             <div className='workout-page-container'>
-            {/* This is what renders when the user has just finished their workout (pop-up). */}
+            {/* This is what renders when the user has just finished their workout (pop-up). 
                 {
                     isOver === true ?
                         <div className='workout-pop-up-container'>
@@ -165,17 +168,20 @@ class Workout extends Component {
                         </div> :
                         <div></div>
                 }
+            */}
                 {/* This is what renders when the usser is ready to workout. */}
+                {/*
                 <div className='workout-page-card'>
                     <h1 className='workout-page-head'>{title}</h1>
                     <img className='workout-image' src={image} alt={alt}/>
                     <p style={{marginTop: '50px'}}><strong>Targets: </strong>{targets}</p>
-                    <p><strong>Description: </strong>{description}</p>
+                     <p><strong>Description: </strong>{description}</p> 
                     
                 </div>
+                */}
                 <div className='timer-container'>
                     <Timer
-                        initialTime={2000} 
+                        initialTime={300000} 
                         direction='backward' 
                         startImmediately={false}  
                         onStart={this.handleButton} 

@@ -37,7 +37,8 @@
     background: #fcf7f8;
     /* box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2); */
     padding: 2px 16px;
-    font-family: 'Palatino, serif'
+    font-family: 'Palatino, serif';
+    color: rgb(187, 187, 194);
 
     
 }
@@ -45,9 +46,13 @@
 
 
 #homeContainer{
-     background: rgba(0, 0, 0, 0.3); 
-    border-radius: 30px; 
+     /* background: rgba(0, 0, 0, 0.3);  */
+    background-color: black;
     /* text-shadow: 2px 2px black; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    box-shadow: 25px 20px 15px rgb(39, 38, 38);
 
 }
 
@@ -65,7 +70,7 @@
 .progress {
     height: 2rem;
     font-size: 1.5rem;
-
+    background: rgb(187, 187, 194);
 }
 
 .mytopSection{
@@ -76,5 +81,6 @@
 .progressSection{
     /* background: rgba(0, 0, 0, .4); */
     border-radius: 30px;
-    padding: 5px 
+    padding: 5px ;
+    width: 100%
 }

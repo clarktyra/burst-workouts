@@ -15,7 +15,7 @@ export default {
       username: username,
       email: email,
       password: password,
-      currentStreak: 29,
+      currentStreak: 0,
       longestStreak: 0,
       totalWorkouts: 0,
       lastWorkout: '',
