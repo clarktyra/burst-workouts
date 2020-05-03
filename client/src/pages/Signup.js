@@ -5,12 +5,9 @@ import API from './../utils/API';
 import './styles/Signup.css';
 
 // import workoutImg from '../images/workout-image.jpg';
-import jumpropeImg from '../images/with-jump-rope.jpg';
 
 
-const imgStyle = {
-  width: "100%"
-}
+
 class Signup extends Component {
   constructor() {
     super();

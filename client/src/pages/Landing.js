@@ -1,31 +1,9 @@
 import React, { Component } from 'react';
-import apartment from '../images/apartment.jpg'
-import styled from 'styled-components';
+
 import './Landing.css';
 
-import {
-    Collapse,
-    Card, Button, CardImg, CardTitle, CardText, CardGroup,
-    CardSubtitle, CardBody, Jumbotron, Container, CardDeck
-} from 'reactstrap';
 
 
-const Picture = styled.img`
-    width: 100%;
-    border-radius: 15;
-`;
-
-const titleStyle = {
-    fontSize: '30px'
-}
-
-const cardStyle = {
-    fontFamily: 'Palatino, serif'
-}
-
-const containerStyle = {
-    backgroundImage: { apartment }
-}
 
 class Landing extends Component {
     render() {

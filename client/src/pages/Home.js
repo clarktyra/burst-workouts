@@ -4,26 +4,17 @@ import "./styles/Home.css";
 import API from "./../utils/API";
 // import { link } from 'react-router-dom';
 import {
-  Collapse,
-  Button,
+ 
   CardBody,
   Card,
   CardTitle,
   CardSubtitle,
-  CardText,
   Progress,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
+  
   Container,
   Row,
-  Col,
-  Toast,
-  ToastHeader,
-  ToastBody
+  Col
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import { tidbits } from "../utils/exercise-tidbits-data";
 
 const icon1Style = {
@@ -32,9 +23,7 @@ const icon1Style = {
 const icon2Style = {
   color: "red"
 };
-const icon3Style = {
-  color: "green"
-};
+
 
 const titleStyle = {
   fontSize: "50px",
@@ -43,10 +32,7 @@ const titleStyle = {
 
 };
 
-const title1Style = {
-  fontSize: "175px",
-  textAlign: "center"
-};
+
 
 const subTitleStyle = {
   color: "rgb(187, 187, 194)",
@@ -57,18 +43,7 @@ const subTitleStyle = {
   textAlign: "center"
 };
 
-const cardStyle = {
-  height: "100%"
-};
 
-const buttonStyle = {
-  display: "flex",
-  justifyContent: "center"
-};
-
-const progessStyle = {
-  backgroundColor: "#FF0000"
-};
 
 class Home extends Component {
   constructor(props) {
