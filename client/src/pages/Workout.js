@@ -134,7 +134,7 @@ class Workout extends Component {
                 direction="backward"
                 startImmediately={false}
                 onStart={this.handleButton}
-                onStop={this.nextExercise}
+                onStop={this.handleButton}
                 checkpoints={[
                   {
                     time: 300000,
