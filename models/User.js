@@ -41,17 +41,13 @@ const UserSchema = new Schema({
   lastWorkout: {
     type: String,
     required: false
-  },
-  rating: {
+  }, 
+  fireWeeks: {
     type: Number,
     required: false
   },
-  comment: {
-    type: String,
-    required: false
-  },
-  commentTimestamp: {
-    type: String,
+  fireMonths: {
+    type: Number,
     required: false
   }
 });

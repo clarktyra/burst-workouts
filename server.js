@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/appDB', { useNewUrlParser: true, useCreateIndex: true })
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/workoutDB', { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log("MongoDB Connected!"))
   .catch(err => console.error(err));
 
@@ -81,13 +81,21 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
     }
     user.currentStreak = incrementer(user.currentStreak);
     user.totalWorkouts = incrementer(user.totalWorkouts);
+    //Comment these out for testing
     if (user.lastWorkout !== moment(todaysDate).subtract(1, 'day').format('YYYY-MM-DD')) {
       user.currentStreak = 1;
     } 
+    //Comment these out for testing
     if (user.currentStreak > user.longestStreak) {
       user.longestStreak = user.currentStreak;
     }
     user.lastWorkout = todaysDate;  
+    if (parseInt(user.currentStreak % 7) === 0){
+      user.fireWeeks = incrementer(user.fireWeeks)
+    }
+    if ( (user.currentStreak % 30) === 0){
+      user.fireMonths = incrementer(user.fireMonths)
+    }
     user.save((err) => {
       if (err) throw err;
       console.log('current streak and last workout updated');
@@ -95,18 +103,38 @@ app.put('/api/user/:id', isAuthenticated, (req, res) => {
   })
 })
 
-// Updates the user's comments and rating
-app.put('/api/user/:id/:rating/:comment', isAuthenticated, (req, res) => {
-  db.User.findById(req.params.id, (err, user) => {
-    if (err) throw err;
-    user.rating = req.params.rating;
-    user.comment = req.params.comment;
-    user.commentTimestamp = moment().format('MM-DD-YYYY h:mm:ss a')
-    user.save((err) => {
-      if (err) throw err;
-      console.log('feedback updated', user.comment);
-    })
-  })
+// Updates the user's review and rating
+app.post('/api/feedback', isAuthenticated, (req, res) => {
+  db.Feedback.create(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+})
+
+// Gets all the feedback from the database
+app.get('/api/feedback', isAuthenticated, (req, res) => {
+  db.Feedback.find()
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).send({ success: false, message: 'No users found' });
+      }
+    }).catch(err => res.status(400).send(err));
+});
+
+// delete user on settings page
+app.delete('/api/user/:id', isAuthenticated, (req, res) => {
+  db.User.findByIdAndRemove(req.params.id, (err, user) => {
+    // As always, handle any potential errors:
+    if (err) return res.status(500).send(err);
+    // We'll create a simple object to send back with a message and the id of the document that was removed
+    // You can really do this however you want, though.
+    const response = {
+        message: "Todo successfully deleted",
+        id: user._id
+    };
+    return res.status(200).send(response);
+});
 })
 
 // Serve up static assets (usually on heroku)

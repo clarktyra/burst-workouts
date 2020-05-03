@@ -1,20 +1,86 @@
 #first-card {
-    background: rgb(255, 102, 0)
+    color: white;
+    text-shadow: 2px 2px black;
+
+    /* background: #fcf7f8; */
+    font-family: 'Palatino, serif';
+    background: rgba(0, 0, 0, 0);
+    border: none;
+
+
 }
 #middle-card {
-    background: rgba(255, 153, 0, 0.815)
+    color: white;
+    text-shadow: 2px 2px black;
+
+    font-family: 'Palatino, serif';
+    background: rgba(0, 0, 0, 0);
+    border: none;
+
+    
+
 }
 #last-card {
-    background: rgb(76, 0, 255);
-    
+    color: white;
+    text-shadow: 2px 2px black;
+
+    background: #fcf7f8;
+    font-family: 'Palatino, serif';
+    background: rgba(0, 0, 0, 0);
+    border: none;
+
 
 }
 
 .card {
-    color:white;
-    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+    /* color: black; */
+    background: #fcf7f8;
+    /* box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2); */
     padding: 2px 16px;
+    font-family: 'Palatino, serif';
+    color: rgb(187, 187, 194);
+
     
 }
 
-.card:hover { box-shadow: 0px 0px 4px 2px #f0ff17}
+
+
+#homeContainer{
+     /* background: rgba(0, 0, 0, 0.3);  */
+    background-color: black;
+    /* text-shadow: 2px 2px black; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    box-shadow: 25px 20px 15px rgb(39, 38, 38);
+
+}
+
+#welcomeTitle {
+    color:white;
+    font-family: block-header;
+    font-size: 70px;
+}
+.homeButtons {
+    color:white;
+    font-family: block-header;
+    font-size: 50px;
+}
+
+.progress {
+    height: 2rem;
+    font-size: 1.5rem;
+    background: rgb(187, 187, 194);
+}
+
+.mytopSection{
+    /* background: rgba(0, 0, 0, .4); */
+    border-radius: 30px;
+}
+
+.progressSection{
+    /* background: rgba(0, 0, 0, .4); */
+    border-radius: 30px;
+    padding: 5px ;
+    width: 100%
+}

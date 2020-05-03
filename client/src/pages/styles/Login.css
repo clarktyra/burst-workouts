@@ -1,11 +1,34 @@
-.headers {
-    text-align: center
+.headers h1{
+    text-align: center;
+    font-family: block-header;
+    font-size: 75px;
 }
 
-.wrapper {
-    margin: 5px 5px 5px 5px
+.headers h3{
+    text-align: center;
+    font-family: block-header;
+    font-size: 35px;
 }
+
+
 
 img {
     border-radius: 5px;
+}
+
+.thingLogin {
+    background-image: linear-gradient(to right,rgba(255, 165, 0, 0.8),rgba(255, 0, 0, 0.8)),url('../../images/workout-image.jpg');
+    background-position: center;
+  background-size: cover;
+  background-blend-mode:darken;
+  color:white;
+  /* mix-blend-mode: multiply; */
+  text-shadow: 2px 2px black;
+  min-height:100%;
+  height: 100vh;
+}
+
+#loginContainer{
+    margin-top: 20%;
+
 }
