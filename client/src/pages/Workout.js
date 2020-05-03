@@ -82,18 +82,12 @@ class Workout extends Component {
     const {
       isRunning,
       isOver,
-      lastWorkout,
-      todaysDate,
-      selectedWorkoutData,
-      selected,
       title,
-      description,
-      targets,
+      
       image,
       alt
     } = this.state;
-    const ExerciseNumber = 0;
-    const totalExercised = 5;
+    
     return (
       <div className="workout-page-container">
         {isOver === true ? (

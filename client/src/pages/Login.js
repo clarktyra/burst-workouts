@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import AuthService from './../components/AuthService';
 // import { Link } from 'react-router-dom';
-import workoutImg from '../images/workout-image.jpg'
 import './styles/Login.css';
 
 
-const imgStyle = {
-  width: "100%"
-}
+
 class Login extends Component {
   constructor() {
     super();
