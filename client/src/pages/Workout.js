@@ -6,6 +6,7 @@ import "./styles/Workout.css";
 import Timer from "react-compound-timer";
 import { workouts } from "../utils/workout-data";
 import moment from "moment";
+import { Col, Row } from "reactstrap";
 
 class Workout extends Component {
   constructor(props) {
@@ -118,120 +119,128 @@ class Workout extends Component {
         ) : (
           <div></div>
         )}
-        */}
-        <div className="workout-page-card">
-          <h1 className="workout-page-head">{title}</h1>
-          <img className="workout-image" src={image} alt={alt} />
-        </div>
-        <div className="timer-container">
-          <Timer
-            initialTime={300000}
-            direction="backward"
-            startImmediately={false}
-            onStart={this.handleButton}
-            onStop={this.nextExercise}
-            checkpoints={[
-                {
+
+        <Row>
+          <Col>
+            <div className="workout-page-card">
+              <h1 className="workout-page-head">{title}</h1>
+              <img className="workout-image" src={image} alt={alt} />
+            </div>
+          </Col>
+          <Col>
+            <div className="timer-container">
+              <Timer
+                initialTime={300000}
+                direction="backward"
+                startImmediately={false}
+                onStart={this.handleButton}
+                onStop={this.nextExercise}
+                checkpoints={[
+                  {
                     time: 300000,
                     callback: this.nextExercise
                   },
-              {
-                time: 280000,
-                callback: this.nextExercise
-              },
-              {
-                time: 260000,
-                callback: this.nextExercise
-              },
-              {
-                time: 240000,
-                callback: this.nextExercise
-              },
-              {
-                time: 220000,
-                callback: this.nextExercise
-              },
-              {
-                time: 200000,
-                callback: this.nextExercise
-              },
-              {
-                time: 180000,
-                callback: this.nextExercise
-              },
-              {
-                time: 160000,
-                callback: this.nextExercise
-              },
-              {
-                time: 140000,
-                callback: this.nextExercise
-              },
-              {
-                time: 120000,
-                callback: this.nextExercise
-              },
-              {
-                time: 100000,
-                callback: this.nextExercise
-              },
-              {
-                time: 80000,
-                callback: this.nextExercise
-              },
-              {
-                time: 60000,
-                callback: this.nextExercise
-              },
-              {
-                time: 40000,
-                callback: this.nextExercise
-              },
-              {
-                time: 20000,
-                callback: this.nextExercise
-              },
-              {
-                time: 0,
-                callback: this.handleEnd
-              },
-              {
-                time: 0,
-                callback: this.handlePopup
-              }
-            ]}
-          >
-            {({ start, stop }) => (
-              <React.Fragment>
-                <h1>TIMER</h1>
-                <div
-                  className="timer"
-                  style={
-                    isRunning === false
-                      ? { color: "rgb(82, 82, 82)" }
-                      : { color: "rgb(239, 239, 241)" }
+                  {
+                    time: 280000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 260000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 240000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 220000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 200000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 180000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 160000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 140000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 120000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 100000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 80000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 60000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 40000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 20000,
+                    callback: this.nextExercise
+                  },
+                  {
+                    time: 0,
+                    callback: this.handleEnd
+                  },
+                  {
+                    time: 0,
+                    callback: this.handlePopup
                   }
-                >
-                  <Timer.Minutes />:
-                  <Timer.Seconds
-                    formatValue={value => (value < 10 ? `0${value}` : value)}
-                  />
-                </div>
-                <div className="botton-container">
-                  {isRunning === false ? (
-                    <button onClick={start} className="button-start">
-                      START YOUR WORKOUT
-                    </button>
-                  ) : (
-                    <button onClick={stop} className="button-stop">
-                      STOP YOUR WORKOUT
-                    </button>
-                  )}
-                </div>
-              </React.Fragment>
-            )}
-          </Timer>
-        </div>
+                ]}
+              >
+                {({ start, stop }) => (
+                  <React.Fragment>
+                    <h1>TIMER</h1>
+                    <div
+                      className="timer"
+                      style={
+                        isRunning === false
+                          ? { color: "rgb(82, 82, 82)" }
+                          : { color: "rgb(239, 239, 241)" }
+                      }
+                    >
+                      <Timer.Minutes />:
+                      <Timer.Seconds
+                        formatValue={value =>
+                          value < 10 ? `0${value}` : value
+                        }
+                      />
+                    </div>
+                    <div className="botton-container">
+                      {isRunning === false ? (
+                        <button onClick={start} className="button-start">
+                          START YOUR WORKOUT
+                        </button>
+                      ) : (
+                        <button onClick={stop} className="button-stop">
+                          STOP YOUR WORKOUT
+                        </button>
+                      )}
+                    </div>
+                  </React.Fragment>
+                )}
+              </Timer>
+            </div>
+          </Col>
+        </Row>
       </div>
     );
   }
